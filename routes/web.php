@@ -44,7 +44,7 @@ Route::get('/verifikasi', 'verifikasi_controller@index')->name('verifikasi');
 Route::get('/penjadwalanujian', 'penjadwalanujian_controller@index')->name('penjadwalanujian');
 Route::get('/daftarregismhs', 'daftarregismhs_controller@index')->name('daftarregismhs');
 
-
-
+Route::get('/homeD', 'HomeDController@index')->name('homeD');
+Route::get('/sk', 'pgjnController@index')->name('sk');
 
 

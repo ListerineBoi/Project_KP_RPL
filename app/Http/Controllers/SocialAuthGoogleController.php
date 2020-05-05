@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\dosen;
 use Socialite;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -23,10 +24,18 @@ class SocialAuthGoogleController extends Controller
             $googleUser = Socialite::driver('google')->stateless()->user();
 
             $existUser = User::Where('email',$googleUser->email)->first();
+            $existDosen = dosen::Where('email',$googleUser->email)->first();
 
             if($existUser)
             {
-                Auth::loginUsingId($existUser->id, true);
+                Auth::login($existUser);
+                return redirect()->to('/home');
+            }
+            elseif($existDosen)
+            {
+                Auth::guard('dosen')->loginUsingId($existDosen->id, true);
+                return redirect()->to('/homeD');
+                //$existDosen->id_dosen
             }
             else
             {
@@ -35,9 +44,10 @@ class SocialAuthGoogleController extends Controller
                 $user->email = $googleUser->email;
                 $user->google_id = $googleUser->id;
                 $user->save();
-                Auth::loginUsingId($user->id, true);
+                Auth::login($user);
+                return redirect()->to('/home');
             }
-            return redirect()->to('/home');
+            
         }catch (Exception $e){
             return 'err';
         }
