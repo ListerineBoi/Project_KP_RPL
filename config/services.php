@@ -34,6 +34,6 @@ return [
         'client_id' => '826563694804-it9ja3j01uuj4b9u38jikejju5ss0osr.apps.googleusercontent.com', // your client_id form google console
         'client_secret' => '9KqQa-15nGFprAE7RX_ZkQmX', // your client_secret form google console
         //'redirect' => 'http://localhost:8000/callback'],
-        'redirect' => 'http://localhost/larav/laravel/public/callback'],
+        'redirect' => 'http://localhost/laravel/public/callback'],
 
 ];
