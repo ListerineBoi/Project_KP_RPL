@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm" >
+        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm sticky-top" >
             <div class="container">
                 <a class="navbar-brand navbar-right" href="{{ url('/') }}"> KP UKDW </a>
 
@@ -46,21 +46,9 @@
 
                         <a class="nav-link" href="{{ route('jadwalujian') }}"> JADWAL UJIAN </a>
 
-                        
-
                     </ul>
-
-
-
-
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-Light my-2 my-sm-0 btn btn-info" type="submit">Search </button>
-                        </form>
-                    </ul>
 
                         <!-- Authentication Links -->
                         @guest
