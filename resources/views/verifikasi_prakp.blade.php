@@ -6,14 +6,14 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('/home') }}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Verifikasi KP</li>
+            <li class="breadcrumb-item active" aria-current="page"> Verifikasi Pra-KP</li>
         </ol>
     </nav>
 
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"> <strong> Verifikasi KP </strong> </div>
+                <div class="card-header"> <strong> Verifikasi Pra-KP </strong> </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -50,13 +50,13 @@
 
                                         <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle"><b>Verifikasi KP</b></h5>
+                                                    <h5 class="modal-title" id="exampleModalLongTitle"><b>Verifikasi Pra-KP</b></h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
 
                                             <div class="modal-body">
-                                                <p><b> Yakin ingin memverifikasi ? </b></p>
+                                                <p><b>Yakin ingin memverifikasi ?</b></p>
                                                 <p> NIM </p>
                                                 <p> Nama </p>
                                                 <p> Judul </p>

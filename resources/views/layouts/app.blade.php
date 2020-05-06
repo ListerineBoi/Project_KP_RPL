@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm" >
+        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm sticky-top" >
             <div class="container">
                 <a class="navbar-brand navbar-right" href="{{ url('/') }}"> KP UKDW </a>
 
@@ -46,18 +46,15 @@
 
                         <a class="nav-link" href="{{ route('jadwalujian') }}"> JADWAL UJIAN </a>
 
-                        
-
                     </ul>
 
-
-
-
-
                     <!-- Right Side Of Navbar -->
+<<<<<<< HEAD
                     <ul class="navbar-nav ml-auto">
                         
                     </ul>
+=======
+>>>>>>> 07c7be25061ca2a26136bd1cac9510ddd2d3b5b6
 
                         <!-- Authentication Links -->
                         @guest

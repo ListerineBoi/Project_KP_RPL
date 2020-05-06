@@ -29,6 +29,7 @@ Route::get('/callback', 'SocialAuthGoogleController@callback');
 //home
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 //mahasiswa
 Route::get('/sk', 'pgjnController@index')->name('sk');
 Route::get('/kp', 'kp_controller@index')->name('kp');
@@ -38,13 +39,17 @@ Route::get('/jadwalujian', 'jadwalujian_controller@index')->name('jadwalujian');
 //dosen
 Route::get('/bimbingan', 'bimbingan_controller@index')->name('bimbingan');
 Route::get('/jadwalujian_dosen', 'jadwalujian_dosen_controller@index')->name('jadwalujian_dosen');
+Route::get('/homeD', 'HomeDController@index')->name('homeD');
+Route::get('/sk', 'pgjnController@index')->name('sk');
 
 //koor
 Route::get('/verifikasi', 'verifikasi_controller@index')->name('verifikasi');
+Route::get('/verifikasi_prakp', 'verifikasi_prakp_controller@index')->name('verifikasi_prakp');
+Route::get('/verifikasi_sk', 'verifikasi_sk_controller@index')->name('verifikasi_sk');
 Route::get('/penjadwalanujian', 'penjadwalanujian_controller@index')->name('penjadwalanujian');
 Route::get('/daftarregismhs', 'daftarregismhs_controller@index')->name('daftarregismhs');
+Route::get('/daftarregismhsprakp', 'daftarregismhsprakp_controller@index')->name('daftarregismhsprakp');
 
-Route::get('/homeD', 'HomeDController@index')->name('homeD');
-Route::get('/sk', 'pgjnController@index')->name('sk');
+
 
 

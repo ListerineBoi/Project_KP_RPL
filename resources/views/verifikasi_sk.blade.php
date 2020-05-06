@@ -6,14 +6,14 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('/home') }}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Verifikasi KP</li>
+            <li class="breadcrumb-item active" aria-current="page"> Verifikasi Surat Keterangan</li>
         </ol>
     </nav>
 
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"> <strong> Verifikasi KP </strong> </div>
+                <div class="card-header"> <strong> Verifikasi Surat Keterangan </strong> </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -28,9 +28,7 @@
                                 <th> No </th>
                                 <th> NIM </th>
                                 <th> Nama </th>
-                                <th> Judul </th>
-                                <th> Tool </th>
-                                <th> Spek </th>
+                                <th> Dokumen </th>
                                 <th> Action </th>
                                 <th> Status </th>
                             <tr>
@@ -38,9 +36,7 @@
                                 <td> 1 </td>
                                 <td> 72180198 </td>
                                 <td> Rico Alex </td>
-                                <td> Kebakaran Hutan </td>
-                                <td> Pencil</td>
-                                <td> Pencil </td>
+                                <td> sk_PT_KFC.pdf </td>
                                 <td>  
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"> Verifikasi </button>
 
@@ -50,16 +46,16 @@
 
                                         <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle"><b>Verifikasi KP</b></h5>
+                                                    <h5 class="modal-title" id="exampleModalLongTitle"></b>Verifikasi Surat Keterangan</b> </h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
 
                                             <div class="modal-body">
-                                                <p><b> Yakin ingin memverifikasi ? </b></p>
+                                                <p> Yakin ingin memverifikasi ? </p>
                                                 <p> NIM </p>
                                                 <p> Nama </p>
-                                                <p> Judul </p>
+                                                <p> Dokumen </p>
                                             </div>
 
                                             <div class="modal-footer">
@@ -71,7 +67,7 @@
                                     </div>
                                 </div>
                                 </td>
-                                <td> <button disabled="true" class="btn btn-success"> Y </button> </td>
+                                <td> <button disabled="true" class="btn btn-danger"> N </button> </td>
                             </tr>
                         </table>
                     </div>

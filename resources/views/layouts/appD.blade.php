@@ -21,11 +21,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm" >
+        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm sticky-top" >
             <div class="container">
-                <a class="navbar-brand navbar-right" href="{{ url('/') }}">
-                    KP UKDW
-                </a>
+                <a class="navbar-brand navbar-right" href="{{ url('/') }}"> KP UKDW </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,46 +31,48 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pengajuan
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('sk') }}">Surat Keterangan</a>
-                                <a class="dropdown-item" href="#">Kerja Praktek</a>
-                                <a class="dropdown-item" href="#">Pra Kerja Praktek</a>
-                            </div>
-                        </li> -->
-
-                        <!-- Dosen -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> DOSEN </a>
-
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('bimbingan') }}"> BIMBINGAN </a>
-                                <a class="dropdown-item" href="{{ route('jadwalujian_dosen') }}"> JADWAL UJIAN </a>
-                            </div>
-                        </li>
-
-                        <!-- Koor -->
                         @if (Auth::guard('dosen')->user()->koor == true)
+                        <!-- KOORDINATOR -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> KOOR </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">VERIFIKASI</a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('verifikasi') }}"> VERIFIKASI </a>
-                                <a class="dropdown-item" href="{{ route('penjadwalanujian') }}"> PENJADWALAN UJIAN </a>
-                                <a class="dropdown-item" href="{{ route('daftarregismhs') }}"> DAFTAR MAHASISWA REGISTRASI </a>
+                                <a class="dropdown-item" href="{{ route('verifikasi') }}"> VERIFIKASI KP </a>
+                                <a class="dropdown-item" href="{{ route('verifikasi_prakp') }}"> VERIFIKASI PRA-KP </a>
+                                <a class="dropdown-item" href="{{ route('verifikasi_sk') }}"> VERIFIKASI SURAT KETERANGAN </a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">UJIAN</a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('jadwalujian_dosen') }}">JADWAL UJIAN</a>
+                                <a class="dropdown-item" href="{{ route('penjadwalanujian') }}">PENJADWALAN UJIAN</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DAFTAR MAHASISWA REGISTRASI</a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('daftarregismhs') }}">KP</a>
+                                <a class="dropdown-item" href="{{ route('daftarregismhsprakp') }}">PRA-KP</a>
+                            </div>
+                        </li>
+
+                        
+
+                        @endif
+
+                        <!-- DOSEN -->
+                        <a class="nav-link" href="{{ route('bimbingan') }}"> BIMBINGAN </a>
+                        @if (Auth::guard('dosen')->user()->koor == false)
+                        <a class="nav-link" href="{{ route('jadwalujian_dosen') }}">JADWAL UJIAN</a>
                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
                     
-                    </ul>
-                        <!-- Authentication Links -->
+                    <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

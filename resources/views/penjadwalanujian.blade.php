@@ -21,13 +21,13 @@
 
                 <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle"> Set Batas Ujian </h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle"><b>Set Batas Ujian</b></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
                     <div class="modal-body">
-                        <p> NIM </p>
+                        <p><b> NIM <b></p>
                         <select class="form-control">
                             <option> NIM 1 </option>
                             <option> NIM 2 </option>
