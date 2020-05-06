@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    Dosen mamen
+                    Dosen 
                 </div>
             </div>
         </div>
