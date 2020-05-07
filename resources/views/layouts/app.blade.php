@@ -49,12 +49,6 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-<<<<<<< HEAD
-                    <ul class="navbar-nav ml-auto">
-                        
-                    </ul>
-=======
->>>>>>> 07c7be25061ca2a26136bd1cac9510ddd2d3b5b6
 
                         <!-- Authentication Links -->
                         @guest
@@ -86,23 +80,6 @@
                 </div>
             </div>
         </nav>
-        <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-            <div class="container">
-            
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            
-            </div>
-        </nav> -->
         
         <main class="py-4">
             @yield('content')
