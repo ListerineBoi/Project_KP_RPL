@@ -26,12 +26,13 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/redirect', 'SocialAuthGoogleController@redirect');
 Route::get('/callback', 'SocialAuthGoogleController@callback');
 
-//home
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 //mahasiswa
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/sk', 'pgjnController@index')->name('sk');
+Route::post('/Csk', 'pgjnController@create')->name('Csk');
+Route::post('/Ckp', 'kp_controller@create')->name('Ckp');
+Route::post('/Cprakp', 'prakp_controller@create')->name('Cprakp');
 Route::get('/kp', 'kp_controller@index')->name('kp');
 Route::get('/prakp', 'prakp_controller@index')->name('prakp');
 Route::get('/jadwalujian', 'jadwalujian_controller@index')->name('jadwalujian');
