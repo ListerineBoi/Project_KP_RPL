@@ -22,6 +22,12 @@
                         </div>
                     @endif 
 
+                    
+                        @if(\Session::has('success'))
+                        <div class="alert alert-success">
+                            <p>{{\Session::get('success')}}</p>
+                        </div>
+                        @endif
                     <div class="container">
                         <table class="table table-hover">
                             <tr>
@@ -32,16 +38,17 @@
                                 <th> Action </th>
                                 <th> Status </th>
                             <tr>
+                            @foreach($sk as $row)
                             <tr>
-                                <td> 1 </td>
-                                <td> 72180198 </td>
-                                <td> Rico Alex </td>
-                                <td> sk_PT_KFC.pdf </td>
+                                <td> {{$loop->iteration}} </td>
+                                <td> {{$row['nim']}} </td>
+                                <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
+                                <td> {{$row['dokumen']}} </td>
                                 <td>  
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"> Verifikasi </button>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter{{$loop->iteration}}" > Verifikasi </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="exampleModalCenter{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
 
                                         <div class="modal-content">
@@ -53,22 +60,29 @@
 
                                             <div class="modal-body">
                                                 <p> Yakin ingin memverifikasi ? </p>
-                                                <p> NIM </p>
-                                                <p> Nama </p>
-                                                <p> Dokumen </p>
+                                                <p> {{$row['nim']}} </p>
+                                                <p> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </p>
+                                                <p> {{$row['dokumen']}} </p>
                                             </div>
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"> Batal </button>
-                                                <button type="button" class="btn btn-success"> Konfirmasi </button>
+                                                <form method="post" action="{{route('ver_sk')}}">
+                                                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                                                <input type="hidden" name="id" value="{{$row['id_sk']}}">
+                                                <button type="submit" class="btn btn-success"> Konfirmasi </button>
+                                                </form>
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
                                 </td>
+                                
                                 <td> <button disabled="true" class="btn btn-danger"> N </button> </td>
+                    
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>

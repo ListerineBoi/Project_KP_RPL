@@ -47,6 +47,7 @@ Route::get('/sk', 'pgjnController@index')->name('sk');
 Route::get('/verifikasi', 'verifikasi_controller@index')->name('verifikasi');
 Route::get('/verifikasi_prakp', 'verifikasi_prakp_controller@index')->name('verifikasi_prakp');
 Route::get('/verifikasi_sk', 'verifikasi_sk_controller@index')->name('verifikasi_sk');
+Route::post('/ver_sk', 'verifikasi_sk_controller@ver')->name('ver_sk');
 Route::get('/penjadwalanujian', 'penjadwalanujian_controller@index')->name('penjadwalanujian');
 Route::get('/daftarregismhs', 'daftarregismhs_controller@index')->name('daftarregismhs');
 Route::get('/daftarregismhsprakp', 'daftarregismhsprakp_controller@index')->name('daftarregismhsprakp');

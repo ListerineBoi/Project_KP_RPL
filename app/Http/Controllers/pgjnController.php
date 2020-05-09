@@ -53,6 +53,7 @@ class pgjnController extends Controller
             'no_telp' => $request->get('Telp'),
             'alamat' => $request->get('Alamat'),
             'dokumen' => $final,
+            'status_sk' => "0",
             'fax' => $request->get('Fax')
         ]);
         $Sk->save();
