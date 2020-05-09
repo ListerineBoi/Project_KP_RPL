@@ -36,7 +36,7 @@
                             <p>{{\Session::get('success')}}</p>
                         </div>
                         @endif
-                        <form method="post" action="{{route('Csk')}}">
+                        <form method="post" action="{{route('Csk')}}" enctype='multipart/form-data'>
                         <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                             
                             <div class="form-group">
@@ -65,11 +65,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="formGroupExampleInput"> Dokumen (PDF Scan) </label>
-                                    <!-- <div class="custom-file">
-                                        <input type="file" class="custom-file-input">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div> -->
+                                <label for="file"> Dokumen (PDF Scan) </label>
+                                    <div class="custom-file">
+                                        <input type="file" class="form-control-file" id="file" name="doc">
+                                        <label class="form-control-file" for="file"></label>
+                                    </div>
                             </div>
                     
                             <button type="submit" class="btn btn-primary">Submit</button>

@@ -31,9 +31,20 @@ class pgjnController extends Controller
             'Pimpinan' => 'required',
             'Telp' => 'required',
             'Alamat' => 'required',
-            'Fax' => 'required'      
+            'Fax' => 'required',
+            'doc' => 'required'      
 
         ]);
+
+        if($request->hasFile('doc'))
+        {
+            $fullname = $request->file('doc')->getClientOriginalName();
+            $nim=Auth::user()->NIM;
+            $extn =$request->file('doc')->getClientOriginalExtension();
+            $final= $nim.'Sk'.'_'.time().'.'.$extn;
+
+            $path = $request->file('doc')->storeAs('public/suket', $final);
+        }
 
         $Sk= new Sk([
             'nim' => Auth::user()->NIM,
@@ -41,6 +52,7 @@ class pgjnController extends Controller
             'pimpinan' => $request->get('Pimpinan'),
             'no_telp' => $request->get('Telp'),
             'alamat' => $request->get('Alamat'),
+            'dokumen' => $final,
             'fax' => $request->get('Fax')
         ]);
         $Sk->save();
