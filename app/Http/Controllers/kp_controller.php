@@ -36,6 +36,7 @@ class kp_controller extends Controller
         $Kp= new Kp([
             'nim' => Auth::user()->NIM,
             'tool' => $request->get('Tools'),
+            'status_kp' => "0",
             'spek' => $request->get('Spek'),
             'judul' => $request->get('Judul')
         ]);

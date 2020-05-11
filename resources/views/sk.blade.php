@@ -100,7 +100,7 @@
                            
                                 @foreach($sk as $row)
                                 <tr>
-                                    <td>{{$row['nim']}}</td>
+                                    <td>{{$loop->iteration}}</td>
                                     <td>{{$row['lembaga']}}</td>
                                     <td>{{$row['created_at']}}</td>
                                     <td>{{$row['status_sk']}}</td>

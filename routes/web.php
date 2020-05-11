@@ -45,10 +45,13 @@ Route::get('/sk', 'pgjnController@index')->name('sk');
 
 //koor
 Route::get('/verifikasi', 'verifikasi_controller@index')->name('verifikasi');
+Route::post('/ver', 'verifikasi_controller@ver')->name('ver');
 Route::get('/verifikasi_prakp', 'verifikasi_prakp_controller@index')->name('verifikasi_prakp');
+Route::post('/ver_prakp', 'verifikasi_prakp_controller@ver')->name('ver_prakp');
 Route::get('/verifikasi_sk', 'verifikasi_sk_controller@index')->name('verifikasi_sk');
 Route::post('/ver_sk', 'verifikasi_sk_controller@ver')->name('ver_sk');
 Route::get('/penjadwalanujian', 'penjadwalanujian_controller@index')->name('penjadwalanujian');
+Route::post('/Cpenjadwalanujian', 'penjadwalanujian_controller@create')->name('Cpenjadwalanujian');
 Route::get('/daftarregismhs', 'daftarregismhs_controller@index')->name('daftarregismhs');
 Route::get('/daftarregismhsprakp', 'daftarregismhsprakp_controller@index')->name('daftarregismhsprakp');
 

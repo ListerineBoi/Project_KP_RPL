@@ -31,20 +31,22 @@
                                 <th> Ruangan </th>
                                 <th> Judul </th>
                             <tr>
+                            @foreach($Vmjadwal as $row)
                             <tr>
-                                <td> 1 </td>
-                                <td> 72180198 </td>
-                                <td> Rico Alex </td>
-                                <td> 10/11/2019 </td>
-                                <td> C.3.7 </td>
-                                <td> Kebakaran Hutan </td>
+                                <td> {{$loop->iteration}} </td>
+                                <td> {{$row['nim']}} </td>
+                                <td> {{$row['mhs']}} </td>
+                                <td> {{$row['tanggal']}} </td>
+                                <td> {{$row['ruang']}} </td>
+                                <td> {{DB::table('kp')->where('id_kp', $row['id_kp'])->value('judul')}} </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div> <br>
 
-            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('home') }}"> BACK </a> </button>
+            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('homeD') }}"> BACK </a> </button>
 
         </div>
 

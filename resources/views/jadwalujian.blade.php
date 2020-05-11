@@ -34,7 +34,7 @@
                             <tr>
                             <tr>
                             @foreach($Vmjadwal as $row)
-                                <td> 1 </td>
+                                <td> {{$loop->iteration}} </td>
                                 <td> {{$row['nim']}} </td>
                                 <td> {{$row['mhs']}} </td>
                                 <td> {{$row['tanggal']}} </td>
@@ -48,7 +48,7 @@
                 </div>
             </div> <br>
 
-            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('home') }}"> BACK </a> </button>
+            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('homeD') }}"> BACK </a> </button>
 
         </div>
 

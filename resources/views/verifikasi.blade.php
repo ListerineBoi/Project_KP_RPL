@@ -22,6 +22,12 @@
                         </div>
                     @endif 
 
+                    @if(\Session::has('success'))
+                        <div class="alert alert-success">
+                            <p>{{\Session::get('success')}}</p>
+                        </div>
+                        @endif
+
                     <div class="container">
                         <table class="table table-hover">
                             <tr>
@@ -34,18 +40,19 @@
                                 <th> Action </th>
                                 <th> Status </th>
                             <tr>
+                            @foreach($Vkp as $row)
                             <tr>
-                                <td> 1 </td>
-                                <td> 72180198 </td>
-                                <td> Rico Alex </td>
-                                <td> Kebakaran Hutan </td>
-                                <td> Pencil</td>
-                                <td> Pencil </td>
+                                <td> {{$loop->iteration}} </td>
+                                <td> {{$row['nim']}} </td>
+                                <td> {{$row['mhs']}} </td>
+                                <td> {{$row['judul']}} </td>
+                                <td> {{DB::table('kp')->where('id_kp', $row['id_kp'])->value('tool')}}</td>
+                                <td> {{DB::table('kp')->where('id_kp', $row['id_kp'])->value('spek')}} </td>
                                 <td>  
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"> Verifikasi </button>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter{{$loop->iteration}}"> Verifikasi </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="exampleModalCenter{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
 
                                         <div class="modal-content">
@@ -57,14 +64,18 @@
 
                                             <div class="modal-body">
                                                 <p><b> Yakin ingin memverifikasi ? </b></p>
-                                                <p> NIM </p>
-                                                <p> Nama </p>
-                                                <p> Judul </p>
+                                                <p> {{$row['nim']}} </p>
+                                                <p> {{$row['mhs']}} </p>
+                                                <p> {{$row['judul']}} </p>
                                             </div>
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"> Batal </button>
-                                                <button type="button" class="btn btn-success"> Konfirmasi </button>
+                                                <form method="post" action="{{route('ver')}}">
+                                                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                                                <input type="hidden" name="id" value="{{$row['id_kp']}}">
+                                                <button type="submit" class="btn btn-success"> Konfirmasi </button>
+                                                </form>
                                             </div>
 
                                         </div>
@@ -73,12 +84,13 @@
                                 </td>
                                 <td> <button disabled="true" class="btn btn-success"> Y </button> </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div> <br>
 
-            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('home') }}"> BACK </a> </button>
+            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('homeD') }}"> BACK </a> </button>
 
         </div>
 

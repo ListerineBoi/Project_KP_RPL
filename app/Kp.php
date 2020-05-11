@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kp extends Model
 {
     protected $fillable = [
-        'tool', 'spek', 'nim', 'judul', 'craeted_at', 'updated_at', 
+        'tool', 'spek', 'nim', 'judul', 'craeted_at','status_kp', 'updated_at', 
     ];
     protected $table ='kp';
 }

@@ -30,19 +30,21 @@
                                 <th> Judul </th>
                                 <th> Lembaga </th>
                             <tr>
+                            @foreach($Vkp as $row)
                             <tr>
-                                <td> 1 </td>
-                                <td> 72180198 </td>
-                                <td> Rico Alex </td>
-                                <td> Kebakaran Sampah </td>
-                                <td> PT.McD </td>
+                                <td> {{$loop->iteration}} </td>
+                                <td> {{$row['nim']}} </td>
+                                <td> {{$row['mhs']}}</td>
+                                <td> {{$row['judul']}} </td>
+                                <td> {{$row['lembaga']}} </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div> <br>
 
-            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('home') }}"> BACK </a> </button>
+            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('homeD') }}"> BACK </a> </button>
 
         </div>
 

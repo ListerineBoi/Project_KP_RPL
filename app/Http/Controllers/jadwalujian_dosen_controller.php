@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Vmjadwal;
 
 class jadwalujian_dosen_controller extends Controller
 {
@@ -14,6 +16,7 @@ class jadwalujian_dosen_controller extends Controller
 
     public function index()
     {
-        return view('jadwalujian_dosen');
+        $Vmjadwal= Vmjadwal::all()->toArray();
+        return view('jadwalujian_dosen',compact('Vmjadwal'));
     }
 }

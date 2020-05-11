@@ -83,7 +83,7 @@
                                 </tr>
                                 @foreach($Vkp as $row)
                                 <tr>
-                                    <td> 1 </td>
+                                    <td> {{$loop->iteration}} </td>
                                     <td> {{$row['judul']}} </td>
                                     <td> {{$row['name']}} </td>
                                     <td> {{$row['created_at']}} </td>

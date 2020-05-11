@@ -36,6 +36,7 @@ class prakp_controller extends Controller
             'nim' => Auth::user()->NIM,
             'tool' => $request->get('Tools'),
             'spek' => $request->get('Spek'),
+            'status_prakp' => "0",
             'judul' => $request->get('Judul')
         ]);
         $PraKp->save();
