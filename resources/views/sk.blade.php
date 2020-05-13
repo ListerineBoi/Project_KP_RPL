@@ -21,59 +21,54 @@
                             {{ session('status') }}
                             </div>
                         @endif
-
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Periode</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                </select>
-                            </div>
-                    
-                            <div class="form-group">
-                                <label for="formGroupExampleInput">Tahun</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput">Nim</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
-                            </div>
-
+                        
+                        @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        @if(\Session::has('success'))
+                        <div class="alert alert-success">
+                            <p>{{\Session::get('success')}}</p>
+                        </div>
+                        @endif
+                        <form method="post" action="{{route('Csk')}}" enctype='multipart/form-data'>
+                        <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                            
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Lembaga</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
+                                <input type="text" class="form-control" name="Lembaga" >
                             </div>
 
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Pimpinan</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
+                                <input type="text" class="form-control" name="Pimpinan" >
                             </div>
 
                             <div class="form-group">
                                 <label for="formGroupExampleInput">No.Telp</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
+                                <input type="text" class="form-control" name="Telp" >
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Alamat</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" rows="3" name="Alamat"></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Fax</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
+                                <input type="text" class="form-control" name="Fax">
                             </div>
 
                             <div class="form-group">
-                                <label for="formGroupExampleInput"> Dokumen (PDF Scan) </label>
+                                <label for="file"> Dokumen (PDF Scan) </label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" class="form-control-file" id="file" name="doc">
+                                        <label class="form-control-file" for="file"></label>
                                     </div>
                             </div>
                     
@@ -102,12 +97,17 @@
                                 <th> Tanggal </th>
                                 <th> Disetujui </th>
                             </tr>
-                            <tr>
-                                <td> 1 </td>
-                                <td> PT.Telkom </td>
-                                <td> 11/10/2019 </td>
-                                <td> YES </td>
-                            </tr>
+                           
+                                @foreach($sk as $row)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$row['lembaga']}}</td>
+                                    <td>{{$row['created_at']}}</td>
+                                    <td>{{$row['status_sk']}}</td>
+                                </tr>
+                                @endforeach
+                                
+                            
                         </table>
                     </div>
                 </div>

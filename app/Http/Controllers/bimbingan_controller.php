@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\VKp;
 
 class bimbingan_controller extends Controller
 {
@@ -14,6 +16,8 @@ class bimbingan_controller extends Controller
 
     public function index()
     {
-        return view('bimbingan');
+        $iddos=Auth::guard('dosen')->user()->id;
+        $Vkp= VKp::where('id_dosen', '=', $iddos)->get()->toArray();
+        return view('bimbingan',compact('Vkp'));
     }
 }

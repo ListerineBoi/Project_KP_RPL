@@ -26,12 +26,13 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/redirect', 'SocialAuthGoogleController@redirect');
 Route::get('/callback', 'SocialAuthGoogleController@callback');
 
-//home
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 //mahasiswa
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/sk', 'pgjnController@index')->name('sk');
+Route::post('/Csk', 'pgjnController@create')->name('Csk');
+Route::post('/Ckp', 'kp_controller@create')->name('Ckp');
+Route::post('/Cprakp', 'prakp_controller@create')->name('Cprakp');
 Route::get('/kp', 'kp_controller@index')->name('kp');
 Route::get('/prakp', 'prakp_controller@index')->name('prakp');
 Route::get('/jadwalujian', 'jadwalujian_controller@index')->name('jadwalujian');
@@ -45,9 +46,13 @@ Route::get('/sk', 'pgjnController@index')->name('sk');
 
 //koor
 Route::get('/verifikasi', 'verifikasi_controller@index')->name('verifikasi');
+Route::post('/ver', 'verifikasi_controller@ver')->name('ver');
 Route::get('/verifikasi_prakp', 'verifikasi_prakp_controller@index')->name('verifikasi_prakp');
+Route::post('/ver_prakp', 'verifikasi_prakp_controller@ver')->name('ver_prakp');
 Route::get('/verifikasi_sk', 'verifikasi_sk_controller@index')->name('verifikasi_sk');
+Route::post('/ver_sk', 'verifikasi_sk_controller@ver')->name('ver_sk');
 Route::get('/penjadwalanujian', 'penjadwalanujian_controller@index')->name('penjadwalanujian');
+Route::post('/Cpenjadwalanujian', 'penjadwalanujian_controller@create')->name('Cpenjadwalanujian');
 Route::get('/daftarregismhs', 'daftarregismhs_controller@index')->name('daftarregismhs');
 Route::get('/daftarregismhsprakp', 'daftarregismhsprakp_controller@index')->name('daftarregismhsprakp');
 

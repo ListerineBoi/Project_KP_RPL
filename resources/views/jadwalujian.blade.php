@@ -29,26 +29,26 @@
                                 <th> Nama </th>
                                 <th> Tgl Ujian </th>
                                 <th> Ruangan </th>
-                                <th> Judul </th>
                                 <th> Dosen Pendamping </th>
                                 <th> Dosen Penguji </th>
                             <tr>
                             <tr>
-                                <td> 1 </td>
-                                <td> 72180198 </td>
-                                <td> Rico Alex </td>
-                                <td> 10/11/2019 </td>
-                                <td> C.3.7 </td>
-                                <td> Kebakaran Hutan </td>
-                                <td> Dr. Argo Wibowo, S.Kom. </td>
-                                <td> Joko Purwadi S.Kom., M.Kom </td>
+                            @foreach($Vmjadwal as $row)
+                                <td> {{$loop->iteration}} </td>
+                                <td> {{$row['nim']}} </td>
+                                <td> {{$row['mhs']}} </td>
+                                <td> {{$row['tanggal']}} </td>
+                                <td> {{$row['ruang']}} </td>
+                                <td> {{DB::table('dosen')->where('id', $row['pendamping'])->value('name')}} </td>
+                                <td> {{DB::table('dosen')->where('id', $row['penguji'])->value('name')}} </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div> <br>
 
-            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('home') }}"> BACK </a> </button>
+            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('homeD') }}"> BACK </a> </button>
 
         </div>
 

@@ -10,54 +10,11 @@
         </ol>
     </nav>
 
-    <div class="col-md-4" >
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Set Jadwal Ujian  </button> <br><br>
-    </div>
+    
+        
+    
 
-    <div class="col-md-4" >
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-
-                <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle"><b>Set Batas Ujian</b></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                    <div class="modal-body">
-                        <p><b> NIM <b></p>
-                        <select class="form-control">
-                            <option> NIM 1 </option>
-                            <option> NIM 2 </option>
-                        </select> <br>
-
-                        <p> Nama </p>
-                        <select class="form-control">
-                            <option> Nama 1 </option>
-                            <option> Nama 2 </option>
-                        </select> <br>
-
-                        <p> Tanggal Ujian </p>
-                        <input type="date" name="tglujian" class="form-control"> <br>
-
-                        <p> Ruangan </p>
-                        <input type="text" name="ruang" class="form-control">
-
-
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Batal </button>
-                        <button type="button" class="btn btn-success"> Konfirmasi </button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -70,6 +27,16 @@
                         </div>
                     @endif 
 
+                    @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
                     <div class="container">
                         <table class="table table-hover">
                             <tr>
@@ -77,21 +44,71 @@
                                 <th> NIM </th>
                                 <th> Nama </th>
                                 <th> Dosen Pendamping </th>
-                                <th> Dosen Penguji </th>
+                                <th> Set Jadwal </th>
+                                <!-- <th> Dosen Penguji </th> -->
                             <tr>
+                            @foreach($Vkp as $row)
                             <tr>
-                                <td> 1 </td>
-                                <td> 72180198 </td>
-                                <td> Rico Alex </td>
-                                <td> Dr. Argo Wibowo, S.Kom. </td>
-                                <td> Joko Purwadi S.Kom., M.Kom </td>
+                                <td> {{$loop->iteration}} </td>
+                                <td> {{$row['nim']}} </td>
+                                <td> {{$row['mhs']}} </td>
+                                <td> {{$row['name']}} </td>
+                                <td> 
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{$loop->iteration}}"> Set Jadwal Ujian  </button> 
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+
+                                            <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle"><b>Set Batas Ujian</b></h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                <div class="modal-body">
+                                                <form method="post" action="{{route('Cpenjadwalanujian')}}">
+                                                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                                                <input type="hidden" name="id" value="{{$row['id_kp']}}">
+                                                <input type="hidden" name="nim" value="{{$row['nim']}}">
+                                                    <p> Tanggal Ujian </p>
+                                                    <input type="date" name="Tanggal" class="form-control"> 
+                                                    <br>
+                                                    <p> Ruangan </p>
+                                                    <input type="text" name="Ruangan" class="form-control">
+                                                    <br>
+                                                    <p> Jam </p>
+                                                    <input type="text" name="Jam" class="form-control">
+                                                    <br>
+                                                    <p> Penguji </p>
+                                                    <select id="Pen" name="Penguji">
+                                                    @foreach($dosen as $row2)    
+                                                        <option value="{{$row2['id']}}">{{$row2['name']}}</option>
+                                                    @endforeach  
+                                                    </select>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Batal </button>
+                                                    
+                                                    <button type="submit" class="btn btn-success"> Konfirmasi </button>
+                                                    </form>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- <td> DB::table('dosen')->where('id', DB::table('jadwalujian')->where('id_jdl_uji', $row['id_jdl_uji'])->value('id_dosen'))->value('name') </td> -->
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div> <br>
 
-            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('home') }}"> BACK </a> </button>
+            <button class="btn btn-success"> <a style="color:white;text-decoration: none;" href="{{ route('homeD') }}"> BACK </a> </button>
 
         </div>
 

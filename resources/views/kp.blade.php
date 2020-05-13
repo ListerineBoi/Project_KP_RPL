@@ -22,73 +22,39 @@
                         </div>
                     @endif
 
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1"> Semester </label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option> Genap </option>
-                                <option> Gasal </option>
-                            </select>
-                        </div>
-                    
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> Tahun </label>
-                            <input type="text" class="form-control" id="formGroupExampleInput">
-                        </div>
+                    @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                            </ul>
+                            </div>
+                    @endif
 
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> NIM </label>
-                            <input type="text" class="form-control" id="formGroupExampleInput">
+                    @if(\Session::has('success'))
+                        <div class="alert alert-success">
+                            <p>{{\Session::get('success')}}</p>
                         </div>
+                    @endif
 
+                    <form method="post" action="{{route('Ckp')}}">
+                    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                         <div class="form-group">
-                            <label for="formGroupExampleInput"> Judul Kerja Prakter </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <label for="formGroupExampleInput"> Judul Kerja Praktek </label>
+                            <textarea class="form-control" name="Judul" rows="3"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="formGroupExampleInput"> Tools </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                            <textarea class="form-control" name="Tools" rows="3"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="formGroupExampleInput"> Spesifikasi Perangkat Lunak / Pekerjaan Kerja Praktek </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"></textarea>
+                            <textarea class="form-control" name="Spek" rows="3"></textarea>
                         </div>
-
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1"> Lembaga </label>
-                            <input type="text" class="form-control" id="formGroupExampleInput">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> Pimpinan </label>
-                            <input type="text" class="form-control" id="formGroupExampleInput">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> No.Telepon </label>
-                            <input type="text" class="form-control" id="formGroupExampleInput">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> Alamat </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> Fax </label>
-                            <input type="text" class="form-control" id="formGroupExampleInput">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> Dokumen (PDF Scan) </label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                        </div>
-                    
+                   
                         <button type="submit" class="btn btn-primary">Submit</button>
 
                     </form>
@@ -96,36 +62,6 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card">
-                <div class="card-header"> <strong> Daftar Pengajuan Pra KP </strong> </div>
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        <div class="container">
-                            <table class="table table-hover" align="center">
-                                <tr>
-                                    <th> No </th>
-                                    <th> Judul </th>
-                                    <th> Pembimbing </th>
-                                    <th> Tanggal </th>
-                                    <th> Disetujui </th>
-                                </tr>
-                                <tr>
-                                    <td> 1 </td>
-                                    <td> Kebakaran Hutan </td>
-                                    <td> Dr. Argo Wibowo, S.Kom., </td>
-                                    <td> 11/10/2019 </td>
-                                    <td> YES </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-            </div>
-            <br><br>
             <div class="card">
                 <div class="card-header"> <strong> Daftar Pengajuan KP </strong> </div>
 
@@ -145,13 +81,16 @@
                                     <th> Tanggal </th>
                                     <th> Disetujui </th>
                                 </tr>
+                                @foreach($Vkp as $row)
                                 <tr>
-                                    <td> 1 </td>
-                                    <td> Kebakaran Hutan </td>
-                                    <td> Dr. Argo Wibowo, S.Kom., </td>
-                                    <td> 11/10/2019 </td>
-                                    <td> YES </td>
+                                    <td> {{$loop->iteration}} </td>
+                                    <td> {{$row['judul']}} </td>
+                                    <td> {{$row['name']}} </td>
+                                    <td> {{$row['created_at']}} </td>
+                                    <td> {{$row['status_kp']}} </td>
                                 </tr>
+                                
+                                @endforeach
                             </table>
                         </div>
                     </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Vmjadwal;
 
 class jadwalujian_controller extends Controller
 {
@@ -14,6 +16,8 @@ class jadwalujian_controller extends Controller
 
     public function index()
     {
-        return view('jadwalujian');
+        $nim=Auth::user()->NIM;
+        $Vmjadwal= Vmjadwal::where('nim', '=', $nim)->get()->toArray();
+        return view('jadwalujian',compact('Vmjadwal'));
     }
 }
