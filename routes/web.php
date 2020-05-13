@@ -35,6 +35,7 @@ Route::get('/sk', 'pgjnController@index')->name('sk');
 Route::get('/kp', 'kp_controller@index')->name('kp');
 Route::get('/prakp', 'prakp_controller@index')->name('prakp');
 Route::get('/jadwalujian', 'jadwalujian_controller@index')->name('jadwalujian');
+Route::get('/data_mhs', 'data_mhs_controller@index')->name('data_mhs');
 
 //dosen
 Route::get('/bimbingan', 'bimbingan_controller@index')->name('bimbingan');

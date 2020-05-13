@@ -40,6 +40,7 @@
                                 <a class="dropdown-item" href="{{ route('sk') }}"> Surat Keterangan </a>
                                 <a class="dropdown-item" href="{{ route('kp') }}"> Kerja Praktek </a>
                                 <a class="dropdown-item" href="{{ route('prakp') }}"> Pra Kerja Praktek </a>
+                                <a class="dropdown-item" href="{{ route('data_mhs') }}"> FORM </a>
                             </div>
 
                         </li>
