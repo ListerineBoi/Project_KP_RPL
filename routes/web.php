@@ -43,6 +43,7 @@ Route::get('/bimbingan', 'bimbingan_controller@index')->name('bimbingan');
 Route::get('/jadwalujian_dosen', 'jadwalujian_dosen_controller@index')->name('jadwalujian_dosen');
 Route::get('/homeD', 'HomeDController@index')->name('homeD');
 Route::get('/sk', 'pgjnController@index')->name('sk');
+Route::get('/data_dosen', 'data_dosen_controller@index')->name('data_dosen');
 
 //koor
 Route::get('/verifikasi', 'verifikasi_controller@index')->name('verifikasi');
@@ -55,6 +56,7 @@ Route::get('/penjadwalanujian', 'penjadwalanujian_controller@index')->name('penj
 Route::post('/Cpenjadwalanujian', 'penjadwalanujian_controller@create')->name('Cpenjadwalanujian');
 Route::get('/daftarregismhs', 'daftarregismhs_controller@index')->name('daftarregismhs');
 Route::get('/daftarregismhsprakp', 'daftarregismhsprakp_controller@index')->name('daftarregismhsprakp');
+Route::get('/periode', 'periode_controller@index')->name('periode');
 
 
 

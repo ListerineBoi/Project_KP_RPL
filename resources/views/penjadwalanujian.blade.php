@@ -10,11 +10,6 @@
         </ol>
     </nav>
 
-    
-        
-    
-
-    
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -81,7 +76,7 @@
                                                     <input type="text" name="Jam" class="form-control">
                                                     <br>
                                                     <p> Penguji </p>
-                                                    <select id="Pen" name="Penguji">
+                                                    <select id="Pen" name="Penguji" class="form-control">
                                                     @foreach($dosen as $row2)    
                                                         <option value="{{$row2['id']}}">{{$row2['name']}}</option>
                                                     @endforeach  

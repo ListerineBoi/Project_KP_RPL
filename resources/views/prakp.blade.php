@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- breadcrumb -->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -42,17 +43,17 @@
                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                         <div class="form-group">
                             <label for="formGroupExampleInput"> Judul Pra-KP </label>
-                            <textarea class="form-control" name="Judul" rows="3"></textarea>
+                            <textarea class="form-control" name="Judul" rows="3" placeholder="ex.Kebakaran Hutan"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="formGroupExampleInput"> Tools </label>
-                            <textarea class="form-control" name="Tools" rows="3"></textarea>
+                            <textarea class="form-control" name="Tools" rows="3" placeholder="ex.Python,PHP,dll"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="formGroupExampleInput"> Spesifikasi Perangkat Lunak / Pekerjaan Kerja Praktek </label>
-                            <textarea class="form-control" name="Spek" rows="3"></textarea>
+                            <textarea class="form-control" name="Spek" rows="3" placeholder="ex.Visual Code, Sublime, Notepad++"></textarea>
                         </div>
 
                     
@@ -87,7 +88,13 @@
                                     <td> {{$row['judul']}} </td>
                                     <td> {{$row['name']}} </td>
                                     <td> {{$row['created_at']}} </td>
-                                    <td> {{$row['status_prakp']}} </td>
+                                    @if($row['status_prakp'] == 1)
+                                        <td><span class="fa fa-check" style="font-size:24px"></span></td>
+                                    @elseif ($row['status_prakp'] == 2)
+                                        <td><span class="fa fa-close" style="font-size:24px"></span></td>
+                                    @else
+                                        <td><span class="fa fa-clock-o" style="font-size:24px"></span></td>
+                                    @endif
                                 </tr>
                                 
                                 @endforeach

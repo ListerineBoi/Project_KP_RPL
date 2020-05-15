@@ -1,15 +1,15 @@
-@extends('layouts.app')
-
-@section('content')
+<!DOCTYPE html>
+<html>
+<head>
+    <title> </title>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body>
+<br>
 <div class="container">
-<!-- breadcrumb -->
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ url('/home') }}">Home</a></li>
-    <li class="breadcrumb-item active">Pengajuan</li>
-    <li class="breadcrumb-item active" aria-current="page">Surat Keterangan</li>
-  </ol>
-</nav>
     <div class="row justify-content-center">
         <div class="col-md-6">  
             <div class="card">
@@ -46,4 +46,5 @@
         </div>
     </div>
 </div>
-@endsection
+</body>
+</html>

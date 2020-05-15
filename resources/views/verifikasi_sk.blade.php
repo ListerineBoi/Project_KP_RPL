@@ -36,7 +36,6 @@
                                 <th> Nama </th>
                                 <th> Dokumen </th>
                                 <th> Action </th>
-                                <th> Status </th>
                             <tr>
                             @foreach($sk as $row)
                             <tr>
@@ -78,8 +77,6 @@
                                     </div>
                                 </div>
                                 </td>
-                                
-                                <td> <button disabled="true" class="btn btn-danger"> N </button> </td>
                     
                             </tr>
                             @endforeach

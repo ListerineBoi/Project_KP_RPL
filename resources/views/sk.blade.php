@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- breadcrumb -->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -41,27 +42,27 @@
                             
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Lembaga</label>
-                                <input type="text" class="form-control" name="Lembaga" >
+                                <input type="text" class="form-control" name="Lembaga" placeholder="ex.PT.Telkom">
                             </div>
 
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Pimpinan</label>
-                                <input type="text" class="form-control" name="Pimpinan" >
+                                <input type="text" class="form-control" name="Pimpinan" placeholder="ex.Dr.Rico Alex Sandra">
                             </div>
 
                             <div class="form-group">
                                 <label for="formGroupExampleInput">No.Telp</label>
-                                <input type="text" class="form-control" name="Telp" >
+                                <input type="text" class="form-control" name="Telp" placeholder="ex.089663759631">
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Alamat</label>
-                                <textarea class="form-control" rows="3" name="Alamat"></textarea>
+                                <textarea class="form-control" rows="3" name="Alamat" placeholder="ex.Jln.Kemuningan"></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Fax</label>
-                                <input type="text" class="form-control" name="Fax">
+                                <input type="text" class="form-control" name="Fax" placeholder="ex.02129222999">
                             </div>
 
                             <div class="form-group">
@@ -95,7 +96,7 @@
                                 <th> No </th>
                                 <th> Lembaga </th>
                                 <th> Tanggal </th>
-                                <th> Disetujui </th>
+                                <th> Status </th>
                             </tr>
                            
                                 @foreach($sk as $row)
@@ -103,7 +104,13 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$row['lembaga']}}</td>
                                     <td>{{$row['created_at']}}</td>
-                                    <td>{{$row['status_sk']}}</td>
+                                    @if($row['status_sk'] == 1)
+                                        <td><span class="fa fa-check" style="font-size:24px"></span></td>
+                                    @elseif ($row['status_sk'] == 2)
+                                        <td><span class="fa fa-close" style="font-size:24px"></span></td>
+                                    @else
+                                        <td><span class="fa fa-clock-o" style="font-size:24px"></span></td>
+                                    @endif
                                 </tr>
                                 @endforeach
                                 

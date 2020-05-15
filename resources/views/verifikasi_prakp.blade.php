@@ -37,7 +37,6 @@
                                 <th> Tool </th>
                                 <th> Spek </th>
                                 <th> Action </th>
-                                <th> Status </th>
                             <tr>
                             @foreach($VPrakp as $row)
                             <tr>
@@ -81,7 +80,6 @@
                                     </div>
                                 </div>
                                 </td>
-                                <td> <button disabled="true" class="btn btn-success"> Y </button> </td>
                             </tr>
                             @endforeach
                         </table>

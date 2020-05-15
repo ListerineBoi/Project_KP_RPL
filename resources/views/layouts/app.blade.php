@@ -18,12 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm sticky-top" >
+        <nav class="navbar navbar-expand-md bg-warning navbar-light shadow-sm sticky-top">
             <div class="container">
-                <a class="navbar-brand navbar-right" href="{{ url('/') }}"> KP UKDW </a>
+                <a class="navbar-brand navbar-right" href="{{ url('/home') }}"> SIKP </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}"> <span class="navbar-toggler-icon"> </span>
                 </button>
@@ -34,24 +36,23 @@
 
                         <!-- Mahasiswa -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> PENGAJUAN </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-drivers-license-o"> PENGAJUAN </span></a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('sk') }}"> Surat Keterangan </a>
                                 <a class="dropdown-item" href="{{ route('kp') }}"> Kerja Praktek </a>
                                 <a class="dropdown-item" href="{{ route('prakp') }}"> Pra Kerja Praktek </a>
-                                <a class="dropdown-item" href="{{ route('data_mhs') }}"> FORM </a>
+                                <a class="dropdown-item" href="{{ route('sk') }}"> Surat Keterangan </a>
                             </div>
-
                         </li>
 
-                        <a class="nav-link" href="{{ route('jadwalujian') }}"> JADWAL UJIAN </a>
+                        <a class="nav-link" href="{{ route('jadwalujian') }}"> <span class="fa fa-calendar"> JADWAL UJIAN </span></a>
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
 
                         <!-- Authentication Links -->
+                    <ul class="navbar-nav ml-auto">
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -63,8 +64,8 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"> </span>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" style="text-decoration: none;color:grey;">
+                                   <span class="fa fa-user-circle-o"> </span> {{ Auth::user()->name }} <span class="caret"> </span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,6 +77,7 @@
                                     </form>
                                 </div>
                             </li>
+
                         @endguest
                     </ul>
                 </div>

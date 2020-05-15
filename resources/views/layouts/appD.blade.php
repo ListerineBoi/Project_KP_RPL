@@ -18,12 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm sticky-top" >
             <div class="container">
-                <a class="navbar-brand navbar-right" href="{{ url('/') }}"> KP UKDW </a>
+                <a class="navbar-brand navbar-right" href="{{ url('/homeD') }}"> SIKP </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,16 +35,16 @@
                         @if (Auth::guard('dosen')->user()->koor == true)
                         <!-- KOORDINATOR -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">VERIFIKASI</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-address-card-o"> VERIFIKASI </span></a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('verifikasi') }}"> VERIFIKASI KP </a>
-                                <a class="dropdown-item" href="{{ route('verifikasi_prakp') }}"> VERIFIKASI PRA-KP </a>
-                                <a class="dropdown-item" href="{{ route('verifikasi_sk') }}"> VERIFIKASI SURAT KETERANGAN </a>
+                                <a class="dropdown-item" href="{{ route('verifikasi') }}">VERIFIKASI KP</a>
+                                <a class="dropdown-item" href="{{ route('verifikasi_prakp') }}">VERIFIKASI PRA-KP</a>
+                                <a class="dropdown-item" href="{{ route('verifikasi_sk') }}">VERIFIKASI SURAT KETERANGAN</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">UJIAN</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-calendar"> UJIAN </span></a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('jadwalujian_dosen') }}">JADWAL UJIAN</a>
@@ -51,7 +52,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DAFTAR MAHASISWA REGISTRASI</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-address-book-o"> DAFTAR MAHASISWA REGISTRASI </span></a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('daftarregismhs') }}">KP</a>
@@ -64,7 +65,8 @@
                         @endif
 
                         <!-- DOSEN -->
-                        <a class="nav-link" href="{{ route('bimbingan') }}"> BIMBINGAN </a>
+                        <a class="nav-link" href="{{ route('bimbingan') }}"> <span class="fa fa-book"> BIMBINGAN </span> </a>
+                        <a class="nav-link" href="{{ route('periode') }}"> <span class="fa fa-calendar-plus-o"> PERIODE </span></a>
                         @if (Auth::guard('dosen')->user()->koor == false)
                         <a class="nav-link" href="{{ route('jadwalujian_dosen') }}">JADWAL UJIAN</a>
                         @endif
@@ -73,6 +75,7 @@
                     <!-- Right Side Of Navbar -->
                     
                     <!-- Authentication Links -->
+                    <ul class="navbar-nav ml-auto">
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
