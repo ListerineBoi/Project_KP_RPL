@@ -19,7 +19,6 @@ class pgjnController extends Controller
         $nim=Auth::user()->NIM;
         $sk= Sk::where([
             ['nim', '=', $nim],
-            ['status_sk', '=', '1'],
         ])->get()->toArray();
         return view('sk', compact('sk'));
     }

@@ -22,7 +22,13 @@ class verifikasi_sk_controller extends Controller
     public function ver(Request $request)
     {
         Sk::where('id_sk', $request->get('id'))->update(['status_sk' => 1]);
-        return redirect()->route('verifikasi_sk')->with('success','Data Added');;
+        return redirect()->route('verifikasi_sk')->with('success','Data Added');
         
+    }
+
+    public function tolak(Request $request)
+    {
+        Sk::where('id_sk', $request->get('id'))->update(['status_sk' => 2]);
+        return redirect()->route('verifikasi_sk')->with('success','Data Added');
     }
 }

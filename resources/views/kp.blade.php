@@ -39,6 +39,12 @@
                         </div>
                     @endif
 
+                    @if(\Session::has('Forbidden'))
+                        <div class="alert alert-danger">
+                            <p>{{\Session::get('Forbidden')}}</p>
+                        </div>
+                    @endif
+
                     <form method="post" action="{{route('Ckp')}}">
                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                         <div class="form-group">
@@ -46,14 +52,6 @@
                             <textarea class="form-control" name="Judul" rows="3" placeholder="ex.Kebakaran Hutan"></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> Tools </label>
-                            <textarea class="form-control" name="Tools" rows="3" placeholder="ex.Python,PHP,dll"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> Tools </label>
-                            <textarea class="form-control" name="Tools" rows="3" placeholder="ex.Python,PHP,dll"></textarea>
-                        </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput"> Tools </label>
                             <textarea class="form-control" name="Tools" rows="3" placeholder="ex.Python,PHP,dll"></textarea>
@@ -94,8 +92,12 @@
                                 <tr>
                                     <td> {{$loop->iteration}} </td>
                                     <td> {{$row['judul']}} </td>
-                                    <td> {{$row['name']}} </td>
-                                    <td> {{$row['created_at']}} </td>
+                                    @if(DB::table('mahasiswa')->where('nim', $row['nim'])->value('id_dosen')==null)
+                                    <td> Belum Ada </td>
+                                    @else
+                                    <td> {{DB::table('dosen')->where('id', DB::table('mahasiswa')->where('nim', $row['nim'])->value('id_dosen'))->value('name')}} </td>
+                                    @endif
+                                    <td> {{$row['created_at']}} </td> 
                                     @if($row['status_kp'] == 1)
                                         <td><span class="fa fa-check" style="font-size:24px"></span></td>
                                     @elseif ($row['status_kp'] == 2)

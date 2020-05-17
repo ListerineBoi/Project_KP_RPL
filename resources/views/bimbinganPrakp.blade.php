@@ -30,7 +30,7 @@
                                 <th> Judul </th>
                                 <th> Lembaga </th>
                             <tr>
-                            @foreach($Vbkp as $row)
+                            @foreach($Vbprakp as $row)
                             <tr>
                                 <td> {{$loop->iteration}} </td>
                                 <td> {{$row['nim']}} </td>

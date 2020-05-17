@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'NIM', 
+        'name', 'email', 'NIM','id_dosen',
     ];
 
     /**
@@ -36,4 +36,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     protected $table ='mahasiswa';
+    public function setAttribute($key, $value)
+  {
+    $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+    if (!$isRememberTokenAttribute)
+    {
+      parent::setAttribute($key, $value);
+    }
+  }
 }

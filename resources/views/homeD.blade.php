@@ -20,29 +20,33 @@
                                 <tr>
                                     <td> NIK </td>
                                     <td> : </td>
-                                    <td> 1D0613 </td>
+                                    <td> {{Auth::guard('dosen')->user()->nik}} </td>
                                 </tr>
                                 <tr>
                                     <td> Nama </td>
                                     <td> : </td>
-                                    <td> Argo Wibowo </td>
+                                    <td> {{Auth::guard('dosen')->user()->name}} </td>
                                 </tr>
                                 <tr>
                                     <td> Email </td>
                                     <td> : </td>
-                                    <td> argo.wibowo@staff.ukdw.ac.id </td>
+                                    <td> {{Auth::guard('dosen')->user()->email}} </td>
                                 </tr>
                                 <tr>
                                     <td> Status </td>
                                     <td> : </td>
+                                    @if(Auth::guard('dosen')->user()->koor == 1)
                                     <td> Koordinator </td>
+                                    @else
+                                    <td> Dosen </td>
+                                    @endif
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
+               
             </div>
-        </div>
     </div>
 </div>
 @endsection

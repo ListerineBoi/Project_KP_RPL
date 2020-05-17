@@ -24,7 +24,7 @@
                     @endif
 
                     @if(count($errors) > 0)
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger"> 
                             <ul>
                             @foreach($errors->all() as $error)
                             <li>{{$error}}</li>
@@ -36,6 +36,12 @@
                     @if(\Session::has('success'))
                         <div class="alert alert-success">
                             <p>{{\Session::get('success')}}</p>
+                        </div>
+                    @endif
+
+                    @if(\Session::has('Forbidden'))
+                        <div class="alert alert-danger">
+                            <p>{{\Session::get('Forbidden')}}</p>
                         </div>
                     @endif
 
@@ -86,7 +92,11 @@
                                 <tr>
                                     <td> {{$loop->iteration}} </td>
                                     <td> {{$row['judul']}} </td>
-                                    <td> {{$row['name']}} </td>
+                                    @if(DB::table('mahasiswa')->where('nim', $row['nim'])->value('id_dosen')==null)
+                                    <td> Belum Ada </td>
+                                    @else
+                                    <td> {{DB::table('dosen')->where('id', DB::table('mahasiswa')->where('nim', $row['nim'])->value('id_dosen'))->value('name')}} </td>
+                                    @endif
                                     <td> {{$row['created_at']}} </td>
                                     @if($row['status_prakp'] == 1)
                                         <td><span class="fa fa-check" style="font-size:24px"></span></td>

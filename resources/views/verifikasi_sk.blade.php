@@ -42,9 +42,16 @@
                                 <td> {{$loop->iteration}} </td>
                                 <td> {{$row['nim']}} </td>
                                 <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
-                                <td> {{$row['dokumen']}} </td>
+                                <td> 
+                                <form method="post" action="{{route('lihat')}}">
+                                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                                <input type="hidden" name="id" value="{{$row['dokumen']}}">
+                                <button type="submit" class="btn btn-primary">{{$row['dokumen']}}</button> 
+                                </form>
+                                </td>
+                                
                                 <td>  
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter{{$loop->iteration}}" > Verifikasi </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{$loop->iteration}}" > Verifikasi </button>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModalCenter{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -60,7 +67,7 @@
                                             <div class="modal-body">
                                                 <p> Yakin ingin memverifikasi ? </p>
                                                 <p> {{$row['nim']}} </p>
-                                                <p> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </p>
+                                                <p> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </p> 
                                                 <p> {{$row['dokumen']}} </p>
                                             </div>
 
@@ -76,8 +83,41 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- --------------------------------------------------------- -->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenterb{{$loop->iteration}}" > tolak </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenterb{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+
+                                        <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle"></b>Verifikasi Surat Keterangan</b> </h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                            <div class="modal-body">
+                                                <p> Yakin ingin menolak ? </p>
+                                                <p> {{$row['nim']}} </p>
+                                                <p> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </p> 
+                                                <p> {{$row['dokumen']}} </p>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"> Batal </button>
+                                                <form method="post" action="{{route('tolak_sk')}}">
+                                                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                                                <input type="hidden" name="id" value="{{$row['id_sk']}}">
+                                                <button type="submit" class="btn btn-success"> Konfirmasi </button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                                 </td>
-                    
+                            
                             </tr>
                             @endforeach
                         </table>
