@@ -32,16 +32,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
     protected $table ='mahasiswa';
+
     public function setAttribute($key, $value)
-  {
-    $isRememberTokenAttribute = $key == $this->getRememberTokenName();
-    if (!$isRememberTokenAttribute)
     {
-      parent::setAttribute($key, $value);
+      $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+      if (!$isRememberTokenAttribute)
+      {
+        parent::setAttribute($key, $value);
+      }
     }
-  }
 }
