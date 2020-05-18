@@ -24,12 +24,21 @@ class data_mhs_controller extends Controller
         $this->validate($request, [
             'Nim' => 'required'      
         ]);
-        $per=periode::where('aktif', '=', 1)->value('id_periode');
-        $update= [
-            'NIM' => $request->get('Nim'),
-            'id_periode' => $per
-        ];
-        User::where('id', $request->get('id'))->update($update); 
-        return redirect()->to('/home');
+        $dup = User::where([
+            ['nim', '=', $request->get('Nim')],
+        ])->value('id');
+        if($dup)
+        {
+            return redirect()->route('data_mhs')->with('Forbidden','Nim anda sudah terpakai!');
+        }
+        else{
+            $per=periode::where('aktif', '=', 1)->value('id_periode');
+            $update= [
+                'NIM' => $request->get('Nim'),
+                'id_periode' => $per
+            ];
+            User::where('id', $request->get('id'))->update($update); 
+            return redirect()->to('/home');
+        }
     }
 }

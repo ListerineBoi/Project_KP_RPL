@@ -31,6 +31,12 @@
                             </div>
                         @endif
 
+                        @if(\Session::has('Forbidden'))
+                        <div class="alert alert-danger">
+                            <p>{{\Session::get('Forbidden')}}</p>
+                        </div>
+                        @endif
+
                         <form method="post" action="{{route('Cdata_mhs')}}">
                         <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                         <input type="hidden" name="id" value="{{Auth::user()->id}}">

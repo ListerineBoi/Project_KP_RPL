@@ -10,6 +10,7 @@ use Socialite;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Str;
+use App\periode;
 
 class SocialAuthGoogleController extends Controller
 {
@@ -36,7 +37,10 @@ class SocialAuthGoogleController extends Controller
                 }
                 else
                 {
+                    $period = periode::where('aktif','=','1')->value('id_periode');
+                    User::where('NIM', Auth::user()->NIM)->update(['id_periode' => $period]);
                     return redirect()->to('/home');
+
                 }
             }
             elseif($existDosen)
