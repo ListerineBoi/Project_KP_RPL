@@ -33,7 +33,7 @@
                         @endif
 
                     <div class="container">
-                        <table class="table table-hover">
+                        <table class="table table-hover" >
                             <tr>
                                 <th> No </th>
                                 <th> NIM </th>

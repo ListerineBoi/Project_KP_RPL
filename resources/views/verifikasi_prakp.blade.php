@@ -28,7 +28,7 @@
                         </div>
                         @endif
                     <div class="container">
-                        <table class="table table-hover">
+                        <table class="table table-hover" style="text-align: center;">
                             <tr>
                                 <th> No </th>
                                 <th> NIM </th>

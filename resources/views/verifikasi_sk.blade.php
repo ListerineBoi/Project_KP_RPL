@@ -29,8 +29,8 @@
                         </div>
                         @endif
                     <div class="container">
-                        <table class="table table-hover">
-                            <tr>
+                        <table class="table table-hover" style="text-align: center;">
+                            <tr >
                                 <th> No </th>
                                 <th> NIM </th>
                                 <th> Nama </th>
@@ -43,10 +43,10 @@
                                 <td> {{$row['nim']}} </td>
                                 <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
                                 <td> 
-                                <form method="post" action="{{route('lihat')}}">
-                                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
-                                <input type="hidden" name="id" value="{{$row['dokumen']}}">
-                                <button type="submit" class="btn btn-primary">{{$row['dokumen']}}</button> 
+                                    <form method="post" action="{{route('lihat')}}">
+                                        <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                                        <input type="hidden" name="id" value="{{$row['dokumen']}}">
+                                        <button type="submit" class="btn btn-link">{{$row['dokumen']}}</button> 
                                 </form>
                                 </td>
                                 
