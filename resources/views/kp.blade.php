@@ -50,14 +50,6 @@
                             <label for="formGroupExampleInput"> Tools </label>
                             <textarea class="form-control" name="Tools" rows="3" placeholder="ex.Python,PHP,dll"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> Tools </label>
-                            <textarea class="form-control" name="Tools" rows="3" placeholder="ex.Python,PHP,dll"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput"> Tools </label>
-                            <textarea class="form-control" name="Tools" rows="3" placeholder="ex.Python,PHP,dll"></textarea>
-                        </div>
 
                         <div class="form-group">
                             <label for="formGroupExampleInput"> Spesifikasi Perangkat Lunak / Pekerjaan Kerja Praktek </label>
