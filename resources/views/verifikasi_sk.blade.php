@@ -35,6 +35,7 @@
                                 <th> NIM </th>
                                 <th> Nama </th>
                                 <th> Dokumen </th>
+                                <th> Status </th>
                                 <th> Action </th>
                             <tr>
                             @foreach($sk as $row)
@@ -49,7 +50,13 @@
                                 <button type="submit" class="btn btn-primary">{{$row['dokumen']}}</button> 
                                 </form>
                                 </td>
-                                
+                                @if($row['status_sk']==0)
+                                <td> menunggu </td>
+                                @elseif($row['status_sk']==1)
+                                <td> terverifikasi </td>
+                                @else
+                                <td> ditolak </td>
+                                @endif
                                 <td>  
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{$loop->iteration}}" > Verifikasi </button>
 

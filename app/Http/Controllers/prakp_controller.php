@@ -7,6 +7,7 @@ use Auth;
 use App\VPraKp;
 use App\PraKp;
 use App\Kp;
+use App\Sk;
 
 class prakp_controller extends Controller
 {
@@ -35,15 +36,31 @@ class prakp_controller extends Controller
             ['status_kp', '=', '1'], 
             ['id_periode', '=', $period],
         ])->value('id_kp');
+
+        $forbid2 = PraKp::where([
+            ['nim', '=', $nim],
+            ['status_prakp', '=', '1'], 
+            ['id_periode', '=', $period],
+        ])->value('id_prakp');
+
+        $forbid1 = Sk::where([
+            ['nim', '=', $nim],
+            ['status_sk', '=', '1'], 
+        ])->value('id_sk');
+
         $period=Auth::user()->id_periode;
         $this->validate($request, [
             'Judul' => 'required',
             'Tools' => 'required',
             'Spek' => 'required'      
         ]);
-        if($forbid)
+        if($forbid1==false)
         {
-            return redirect()->route('prakp')->with('Forbidden','Anda Sudah Mendaftar KP!');
+            return redirect()->route('prakp')->with('Forbidden','belum ada SK yang terverifikasi!');
+        }
+        elseif($forbid == true || $forbid2 == true)
+        {
+            return redirect()->route('prakp')->with('Forbidden','Anda Sudah Mendaftar KP/Sudah ada praKp yang terverifikasi');
         }
         else
         {

@@ -40,7 +40,7 @@ class verifikasi_prakp_controller extends Controller
     public function tolak(Request $request)
     {
         PraKp::where('id_prakp', $request->get('id'))->update(['status_prakp' => 2]);
-        User::where('NIM', $request->get('nim'))->update(['id_dosen' => $dos]);
+        User::where('NIM', $request->get('nim'))->update(['id_dosen' => null]);
         return redirect()->route('verifikasi_prakp')->with('success','Data Added');
     }
 }

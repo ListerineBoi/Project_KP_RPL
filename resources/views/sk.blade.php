@@ -37,6 +37,11 @@
                             <p>{{\Session::get('success')}}</p>
                         </div>
                         @endif
+                        @if(\Session::has('Forbidden'))
+                        <div class="alert alert-danger">
+                            <p>{{\Session::get('Forbidden')}}</p>
+                        </div>
+                        @endif
                         <form method="post" action="{{route('Csk')}}" enctype='multipart/form-data'>
                         <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                             
