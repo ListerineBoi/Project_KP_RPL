@@ -15,7 +15,8 @@ class verifikasi_sk_controller extends Controller
 
     public function index()
     {
-        $sk= Sk::where('status_sk', '=', '0')->get()->toArray();
+        // $sk= Sk::where('status_sk', '=', '0')->get()->toArray();
+        $sk= Sk::all()->toArray();
         return view('verifikasi_sk', compact('sk'));
     }
 

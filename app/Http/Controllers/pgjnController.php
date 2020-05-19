@@ -25,6 +25,7 @@ class pgjnController extends Controller
 
     public function create(Request $request)
     {
+        $nim=Auth::user()->NIM;
         $this->validate($request, [
             'Lembaga' => 'required',
             'Pimpinan' => 'required',
@@ -34,8 +35,17 @@ class pgjnController extends Controller
             'doc' => 'required'      
 
         ]);
+        $forbid = Sk::where([
+            ['nim', '=', $nim],
+            ['status_sk', '=', '1'], 
+        ])->value('id_sk');
 
-        if($request->hasFile('doc'))
+
+        if($forbid)
+        {
+            return redirect()->route('sk')->with('Forbidden','Sudah ada SK yang terverifikasi');
+        }
+        else
         {
             $fullname = $request->file('doc')->getClientOriginalName();
             $nim=Auth::user()->NIM;
@@ -43,7 +53,7 @@ class pgjnController extends Controller
             $final= $nim.'Sk'.'_'.time().'.'.$extn;
 
             $path = $request->file('doc')->storeAs('public/suket', $final);
-        }
+        
 
         $Sk= new Sk([
             'nim' => Auth::user()->NIM,
@@ -57,5 +67,6 @@ class pgjnController extends Controller
         ]);
         $Sk->save();
         return redirect()->route('sk')->with('success','Data Added');
+        }
     }
 }
