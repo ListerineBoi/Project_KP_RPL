@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\VPrakp;
+use App\VbPrakp;
 class daftarregismhsprakp_controller extends Controller
 {
     //
@@ -14,7 +14,7 @@ class daftarregismhsprakp_controller extends Controller
 
     public function index()
     {
-        $Vprakp= VPrakp::where('status_prakp', '=', '1')->get()->toArray();
+        $Vprakp= VbPrakp::where('status_prakp', '=', '1')->get()->toArray();
         return view('daftarregismhsprakp',compact('Vprakp'));
     }
 }

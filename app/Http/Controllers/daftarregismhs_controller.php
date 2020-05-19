@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\VKp;
+use App\Vbkp;
 class daftarregismhs_controller extends Controller
 {
     //
@@ -14,7 +14,7 @@ class daftarregismhs_controller extends Controller
 
     public function index()
     {
-        $Vkp= VKp::where('status_kp', '=', '1')->get()->toArray();
+        $Vkp= Vbkp::where('status_kp', '=', '1')->get()->toArray();
         return view('daftarregismhs', compact('Vkp'));
     }
 }

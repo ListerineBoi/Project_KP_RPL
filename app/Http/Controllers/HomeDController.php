@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeDController extends Controller
 {
@@ -23,6 +24,14 @@ class HomeDController extends Controller
      */
     public function index()
     {
-        return view('homeD');
+        if(Auth::guard('dosen')->user()->nik==null)
+        {
+            return redirect()->to('/data_dosen');
+        }
+        else
+        {
+
+            return view('homeD');
+        }
     }
 }

@@ -47,7 +47,11 @@
                                 <td> {{$loop->iteration}} </td>
                                 <td> {{$row['nim']}} </td>
                                 <td> {{$row['mhs']}} </td>
-                                <td> {{$row['name']}} </td>
+                                @if(DB::table('mahasiswa')->where('nim', $row['nim'])->value('id_dosen')==null)
+                                    <td> Belum Ada </td>
+                                    @else
+                                    <td> {{DB::table('dosen')->where('id', DB::table('mahasiswa')->where('nim', $row['nim'])->value('id_dosen'))->value('name')}} </td>
+                                    @endif
                                 <td> 
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{$loop->iteration}}"> Set Jadwal Ujian  </button> 
                                     <!-- Modal -->

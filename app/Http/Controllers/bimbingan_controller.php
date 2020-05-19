@@ -4,20 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\VKp;
+use App\Vbkp;
+use App\periode;
 
 class bimbingan_controller extends Controller
 {
     //
+
     public function __construct()
     {
         $this->middleware('auth:dosen');
     }
-
+    
     public function index()
     {
+        $period = periode::where('aktif','=','1')->value('id_periode');
         $iddos=Auth::guard('dosen')->user()->id;
-        $Vkp= VKp::where('id_dosen', '=', $iddos)->get()->toArray();
-        return view('bimbingan',compact('Vkp'));
+        $Vbkp= Vbkp::where([
+            ['id_dosen', '=', $iddos],
+            ['id_periode', '=', $period],
+            ])->get()->toArray();
+        return view('bimbingan',compact('Vbkp'));
     }
 }

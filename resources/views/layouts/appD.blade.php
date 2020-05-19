@@ -65,7 +65,14 @@
                         @endif
 
                         <!-- DOSEN -->
-                        <a class="nav-link" href="{{ route('bimbingan') }}"> <span class="fa fa-book"> BIMBINGAN </span> </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-address-card-o"> BIMBINGAN </span></a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('bimbingan') }}">BIMBINGAN KP</a>
+                                <a class="dropdown-item" href="{{ route('bimbinganPKP') }}">BIMBINGAN PRA-KP</a>
+                            </div>
+                        </li>
                         <a class="nav-link" href="{{ route('periode') }}"> <span class="fa fa-calendar-plus-o"> PERIODE </span></a>
                         @if (Auth::guard('dosen')->user()->koor == false)
                         <a class="nav-link" href="{{ route('jadwalujian_dosen') }}">JADWAL UJIAN</a>
@@ -76,16 +83,6 @@
                     
                     <!-- Authentication Links -->
                     <ul class="navbar-nav ml-auto">
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::guard('dosen')->user()->name }} <span class="caret"></span>
@@ -104,7 +101,6 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
                     </ul>
                 </div>
             </div>

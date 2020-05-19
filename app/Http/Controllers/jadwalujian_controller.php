@@ -17,7 +17,11 @@ class jadwalujian_controller extends Controller
     public function index()
     {
         $nim=Auth::user()->NIM;
-        $Vmjadwal= Vmjadwal::where('nim', '=', $nim)->get()->toArray();
+        $period=Auth::user()->id_periode;
+        $Vmjadwal= Vmjadwal::where([
+            ['nim', '=', $nim],
+            ['id_periode', '=', $period],
+        ])->get()->toArray();
         return view('jadwalujian',compact('Vmjadwal'));
     }
 }

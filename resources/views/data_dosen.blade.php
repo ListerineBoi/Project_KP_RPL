@@ -21,17 +21,34 @@
                             </div>
                         @endif
 
-                        <form>
+                        @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                            @foreach($errors->all() as $error) 
+                            <li>{{$error}}</li>
+                            @endforeach
+                            </ul>
+                            </div>
+                        @endif
+                        @if(\Session::has('Forbidden'))
+                        <div class="alert alert-danger">
+                            <p>{{\Session::get('Forbidden')}}</p>
+                        </div>
+                        @endif
+
+                        <form method="post" action="{{route('Cdata_dosen')}}">
+                        <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                        <input type="hidden" name="id" value="{{Auth::guard('dosen')->user()->id}}">
                             <div class="form-group">
                                 <label for="formGroupExampleInput">NIK</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
+                                <input type="text" class="form-control" name="nik">
                             </div>
                     
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Status</label>
-                                <select class="form-control" name="#">
-                                    <option value="#"> Dosen </option>
-                                    <option value="#"> Koordinator </option>
+                                <select class="form-control" name="status">
+                                    <option value="0"> Dosen </option>
+                                    <option value="1"> Koordinator </option>
                                 </select>
                             </div>
 

@@ -7,6 +7,7 @@ use App\VKp;
 use App\dosen;
 use App\Kp;
 use App\jadwalujian;
+use App\periode;
 
 class penjadwalanujian_controller extends Controller
 {
@@ -18,7 +19,11 @@ class penjadwalanujian_controller extends Controller
 
     public function index()
     {
-        $Vkp= VKp::where('id_jdl_uji', '=', null)->get()->toArray();
+        $period = periode::where('aktif','=','1')->value('id_periode');
+        $Vkp= VKp::where([
+            ['id_jdl_uji', '=', null],
+            ['id_periode', '=', $period],
+        ])->get()->toArray();
         $dosen= dosen::all()->toArray();
 
         return view('penjadwalanujian',compact('Vkp','dosen'));

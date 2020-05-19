@@ -21,24 +21,31 @@
                             </div>
                         @endif
 
-                        <form>
+                        @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                            </ul>
+                            </div>
+                        @endif
+
+                        @if(\Session::has('Forbidden'))
+                        <div class="alert alert-danger">
+                            <p>{{\Session::get('Forbidden')}}</p>
+                        </div>
+                        @endif
+
+                        <form method="post" action="{{route('Cdata_mhs')}}">
+                        <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                        <input type="hidden" name="id" value="{{Auth::user()->id}}">
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Nim</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
+                                <input type="text" class="form-control" name="Nim"> 
                             </div>
                     
-                            <div class="form-group">
-                                <label for="formGroupExampleInput">Tahun</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput">Periode</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput">
-                            </div>
-
-                    
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button> 
 
                         </form>
                 </div>

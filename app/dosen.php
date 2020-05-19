@@ -32,9 +32,13 @@ class dosen extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
     protected $table ='dosen';
-    protected $guard ='dosen';
+    public function setAttribute($key, $value)
+    {
+        $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+        if (!$isRememberTokenAttribute)
+        {
+        parent::setAttribute($key, $value);
+        }
+    }
 }

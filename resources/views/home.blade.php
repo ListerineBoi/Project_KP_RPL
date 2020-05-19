@@ -20,27 +20,27 @@
                                 <tr>
                                     <td> NIM </td>
                                     <td> : </td>
-                                    <td> 72180198 </td>
+                                    <td> {{Auth::user()->NIM}}  </td>
                                 </tr>
                                 <tr>
                                     <td> Nama </td>
                                     <td> : </td>
-                                    <td> Rico Alex Sandra </td>
+                                    <td> {{Auth::user()->name}} </td>
                                 </tr>
                                 <tr>
                                     <td> Semester </td>
                                     <td> : </td>
-                                    <td> 2019/2020 </td>
+                                    <td> {{DB::table('periode')->where('id_periode', Auth::user()->id_periode)->value('semester')}} </td>
                                 </tr>
                                 <tr>
-                                    <td> Periode </td>
+                                    <td> Tahun </td>
                                     <td> : </td>
-                                    <td> Genap </td>
+                                    <td> {{DB::table('periode')->where('id_periode', Auth::user()->id_periode)->value('tahun')}} </td>
                                 </tr>
                                 <tr>
                                     <td> Email </td>
                                     <td> : </td>
-                                    <td> rico.alex@si.ukdw.ac.id </td>
+                                    <td> {{Auth::user()->email}} </td>
                                 </tr>
                             </table>
                         </div>
