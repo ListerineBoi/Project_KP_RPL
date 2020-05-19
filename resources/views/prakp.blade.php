@@ -86,7 +86,7 @@
                                     <th> Judul </th>
                                     <th> Pembimbing </th>
                                     <th> Tanggal </th>
-                                    <th> Disetujui </th>
+                                    <th> Status </th>
                                 </tr>
                                 @foreach($VPrakp as $row)
                                 <tr>

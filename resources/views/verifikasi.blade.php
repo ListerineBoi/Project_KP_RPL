@@ -29,7 +29,7 @@
                         @endif
 
                     <div class="container">
-                        <table class="table table-hover" style="text-align: center;">
+                        <table class="table table-hover">
                             <tr>
                                 <th> No </th>
                                 <th> NIM </th>
@@ -62,11 +62,30 @@
                                                 </div>
 
                                             <div class="modal-body">
-                                                <p><b> Yakin ingin memverifikasi ? </b></p>
-                                                <p> {{$row['nim']}} </p>
-                                                <p> {{$row['mhs']}} </p>
-                                                <p> {{$row['judul']}} </p>
-                                                <p> Pembimbing </p>
+                                                <p><b> Yakin ingin memverifikasi ? <b></p>
+                                                <table class="table">
+                                                    <tr>
+                                                        <td> NIM </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['nim']}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Nama </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['mhs']}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Judul </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['judul']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Pembimbing </td>
+                                                        <td> : </td>
+                                                        <td> </td>
+                                                    </tr>
+                                                </table>
+                                                
                                                 <form method="post" action="{{route('ver')}}">
                                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                 <select id="pemb" name="Pembimbing" class="form-control">
@@ -101,9 +120,23 @@
 
                                             <div class="modal-body">
                                                 <p><b> Yakin ingin menolak ? </b></p>
-                                                <p> {{$row['nim']}} </p>
-                                                <p> {{$row['mhs']}} </p>
-                                                <p> {{$row['judul']}} </p>
+                                                <table class="table">
+                                                    <tr>
+                                                        <td> NIM </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['nim']}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Nama </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['mhs']}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Judul </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['judul']}}</td>
+                                                    </tr>
+                                                </table>
                                                 
                                                 <form method="post" action="{{route('tolak')}}">
                                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">

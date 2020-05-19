@@ -43,12 +43,12 @@
                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
                             <div class="form-group">
                                 <label for="formGroupExampleInput"> Semester </label>
-                                <input type="text" class="form-control" name="semester">
+                                <input type="text" class="form-control" name="semester" placeholder="Ex.Ganjil">
                             </div>
                     
                             <div class="form-group">
                                 <label for="formGroupExampleInput"> Tahun </label>
-                                <input type="text" class="form-control" name="Tahun">
+                                <input type="text" class="form-control" name="Tahun" placeholder="Ex.2020">
                             </div>
                     
                             <button type="submit" class="btn btn-primary">Submit</button>

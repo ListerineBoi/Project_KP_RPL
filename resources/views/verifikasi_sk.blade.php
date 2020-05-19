@@ -29,7 +29,7 @@
                         </div>
                         @endif
                     <div class="container">
-                        <table class="table table-hover" style="text-align: center;">
+                        <table class="table table-hover">
                             <tr >
                                 <th> No </th>
                                 <th> NIM </th>
@@ -72,10 +72,24 @@
                                                 </div>
 
                                             <div class="modal-body">
-                                                <p> Yakin ingin memverifikasi ? </p>
-                                                <p> {{$row['nim']}} </p>
-                                                <p> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </p> 
-                                                <p> {{$row['dokumen']}} </p>
+                                                <p><b> Yakin ingin memverifikasi ? <b></p>
+                                                <table class="table">
+                                                    <tr>
+                                                        <td> NIM </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['nim']}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Nama </td>
+                                                        <td> : </td>
+                                                        <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Dokumen </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['dokumen']}} </td>
+                                                    </tr>
+                                                </table>
                                             </div>
 
                                             <div class="modal-footer">
@@ -105,10 +119,24 @@
                                                 </div>
 
                                             <div class="modal-body">
-                                                <p> Yakin ingin menolak ? </p>
-                                                <p> {{$row['nim']}} </p>
-                                                <p> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </p> 
-                                                <p> {{$row['dokumen']}} </p>
+                                                <p><b>Yakin ingin menolak ?</b></p>
+                                                <table class="table">
+                                                    <tr>
+                                                        <td> NIM </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['nim']}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Nama </td>
+                                                        <td> : </td>
+                                                        <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Dokumen </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['dokumen']}} </td>
+                                                    </tr>
+                                                </table>
                                             </div>
 
                                             <div class="modal-footer">
