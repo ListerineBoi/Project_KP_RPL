@@ -60,7 +60,7 @@
                             </div>
                         </li>
 
-                        
+                        <a class="nav-link" href="{{ route('periode') }}"> <span class="fa fa-calendar-plus-o"> PERIODE </span></a>
 
                         @endif
 
@@ -73,9 +73,9 @@
                                 <a class="dropdown-item" href="{{ route('bimbinganPKP') }}">BIMBINGAN PRA-KP</a>
                             </div>
                         </li>
-                        <a class="nav-link" href="{{ route('periode') }}"> <span class="fa fa-calendar-plus-o"> PERIODE </span></a>
+
                         @if (Auth::guard('dosen')->user()->koor == false)
-                        <a class="nav-link" href="{{ route('jadwalujian_dosen') }}">JADWAL UJIAN</a>
+                        <a class="nav-link" href="{{ route('jadwalujian_dosen') }}"><span class="fa fa-calendar"> JADWAL UJIAN </span></a>
                         @endif
                     </ul>
 
