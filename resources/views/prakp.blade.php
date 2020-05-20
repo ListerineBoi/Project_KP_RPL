@@ -45,7 +45,7 @@
                         </div>
                     @endif
 
-                    <form method="post" action="{{route('Cprakp')}}">
+                    <form method="post" action="{{route('Cprakp')}}" enctype='multipart/form-data'>
                     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                         <div class="form-group">
                             <label for="formGroupExampleInput"> Judul Pra-KP </label>
@@ -62,6 +62,38 @@
                             <textarea class="form-control" name="Spek" rows="3" placeholder="ex.Visual Code, Sublime, Notepad++"></textarea>
                         </div>
 
+                        <div class="form-group">
+                                <label for="formGroupExampleInput">Lembaga</label>
+                                <input type="text" class="form-control" name="Lembaga" placeholder="ex.PT.Telkom">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Pimpinan</label>
+                                <input type="text" class="form-control" name="Pimpinan" placeholder="ex.Dr.Rico Alex Sandra">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">No.Telp</label>
+                                <input type="text" class="form-control" name="Telp" placeholder="ex.089663759631">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Alamat</label>
+                                <textarea class="form-control" rows="3" name="Alamat" placeholder="ex.Jln.Kemuningan"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Fax</label>
+                                <input type="text" class="form-control" name="Fax" placeholder="ex.02129222999">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="file"> Dokumen (PDF Scan) </label>
+                                    <div class="custom-file">
+                                        <input type="file" class="form-control-file" id="file" name="doc">
+                                        <label class="form-control-file" for="file"></label>
+                                    </div>
+                            </div>
                     
                         <button type="submit" class="btn btn-primary">Submit</button>
 

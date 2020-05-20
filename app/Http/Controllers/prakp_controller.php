@@ -43,34 +43,46 @@ class prakp_controller extends Controller
             ['id_periode', '=', $period],
         ])->value('id_prakp');
 
-        $forbid1 = Sk::where([
-            ['nim', '=', $nim],
-            ['status_sk', '=', '1'], 
-        ])->value('id_sk');
 
         $period=Auth::user()->id_periode;
         $this->validate($request, [
             'Judul' => 'required',
             'Tools' => 'required',
-            'Spek' => 'required'      
+            'Spek' => 'required',
+            'Lembaga' => 'required',
+            'Pimpinan' => 'required',
+            'Telp' => 'required',
+            'Alamat' => 'required',
+            'Fax' => 'required',
+            'doc' => 'required'     
         ]);
-        if($forbid1==false)
-        {
-            return redirect()->route('prakp')->with('Forbidden','belum ada SK yang terverifikasi!');
-        }
-        elseif($forbid == true || $forbid2 == true)
+       
+        if($forbid == true || $forbid2 == true) 
         {
             return redirect()->route('prakp')->with('Forbidden','Anda Sudah Mendaftar KP/Sudah ada praKp yang terverifikasi');
         }
         else
         {
+            $fullname = $request->file('doc')->getClientOriginalName();
+            $nim=Auth::user()->NIM;
+            $extn =$request->file('doc')->getClientOriginalExtension();
+            $final= $nim.'PraKp'.'_'.time().'.'.$extn;
+
+            $path = $request->file('doc')->storeAs('public/PraKp', $final);
+
         $PraKp= new PraKp([
             'nim' => Auth::user()->NIM,
             'tool' => $request->get('Tools'),
             'spek' => $request->get('Spek'),
             'status_prakp' => "0",
             'id_periode' => $period,
-            'judul' => $request->get('Judul')
+            'judul' => $request->get('Judul'),
+            'lembaga' => $request->get('Lembaga'),
+            'pimpinan' => $request->get('Pimpinan'),
+            'no_telp' => $request->get('Telp'),
+            'alamat' => $request->get('Alamat'), 
+            'dokumen' => $final,
+            'fax' => $request->get('Fax')
         ]);
         $PraKp->save();
         return redirect()->route('prakp')->with('success','Data Added');

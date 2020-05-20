@@ -21,6 +21,15 @@
                             {{ session('status') }}
                         </div>
                     @endif 
+                    @if(count($errors) > 0)
+                        <div class="alert alert-danger"> 
+                            <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                            </ul>
+                            </div>
+                    @endif
 
                     
                         @if(\Session::has('success'))
@@ -46,6 +55,7 @@
                                 <td> 
                                 <form method="post" action="{{route('lihat')}}">
                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                                <input type="hidden" name="from" value="Sk">
                                 <input type="hidden" name="id" value="{{$row['dokumen']}}">
                                 <button type="submit" class="btn btn-primary">{{$row['dokumen']}}</button> 
                                 </form>
@@ -76,16 +86,22 @@
                                                 <p> {{$row['nim']}} </p>
                                                 <p> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </p> 
                                                 <p> {{$row['dokumen']}} </p>
-                                            </div>
 
-                                            <div class="modal-footer">
+                                                <form method="post" action="{{route('ver_sk')}}" enctype='multipart/form-data'>
+                                                <div class="form-group">
+                                                    <label for="file"> Dokumen (PDF Scan) </label>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="form-control-file" id="file" name="doc">
+                                                            <label class="form-control-file" for="file"></label>
+                                                        </div>
+                                                </div>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"> Batal </button>
-                                                <form method="post" action="{{route('ver_sk')}}">
+                                                
                                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                 <input type="hidden" name="id" value="{{$row['id_sk']}}">
                                                 <button type="submit" class="btn btn-success"> Konfirmasi </button>
                                                 </form>
-                                            </div>
+                                                </div>
 
                                         </div>
                                     </div>

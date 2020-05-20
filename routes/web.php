@@ -38,7 +38,7 @@ Route::get('/prakp', 'prakp_controller@index')->name('prakp');
 Route::get('/jadwalujian', 'jadwalujian_controller@index')->name('jadwalujian');
 Route::get('/data_mhs', 'data_mhs_controller@index')->name('data_mhs');
 Route::post('/Cdata_mhs', 'data_mhs_controller@create')->name('Cdata_mhs');
-
+Route::post('/lihatM', 'lihatM_controller@index')->name('lihatM');
 
 //dosen
 Route::get('/bimbingan', 'bimbingan_controller@index')->name('bimbingan');
