@@ -33,7 +33,7 @@
                         @endif
 
                     <div class="container">
-                        <table class="table table-hover">
+                        <table class="table table-hover" >
                             <tr>
                                 <th> No </th>
                                 <th> NIM </th>
@@ -70,16 +70,16 @@
                                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                                 <input type="hidden" name="id" value="{{$row['id_kp']}}">
                                                 <input type="hidden" name="nim" value="{{$row['nim']}}">
-                                                    <p> Tanggal Ujian </p>
+                                                    <p><b>Tanggal Ujian</b></p>
                                                     <input type="date" name="Tanggal" class="form-control"> 
                                                     <br>
-                                                    <p> Ruangan </p>
+                                                    <p><b>Ruangan</b></p>
                                                     <input type="text" name="Ruangan" class="form-control">
                                                     <br>
-                                                    <p> Jam </p>
+                                                    <p><b>Jam</b></p>
                                                     <input type="text" name="Jam" class="form-control">
                                                     <br>
-                                                    <p> Penguji </p>
+                                                    <p><b>Penguji</b></p>
                                                     <select id="Pen" name="Penguji" class="form-control">
                                                     @foreach($dosen as $row2)    
                                                         <option value="{{$row2['id']}}">{{$row2['name']}}</option>

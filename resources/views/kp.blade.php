@@ -113,7 +113,7 @@
                         @endif
 
                         <div class="container">
-                            <table class="table table-hover" align="center">
+                            <table class="table table-hover" style="text-align: center;">
                                 <tr>
                                     <th> No </th>
                                     <th> Judul </th>

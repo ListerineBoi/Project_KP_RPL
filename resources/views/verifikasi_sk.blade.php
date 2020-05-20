@@ -39,7 +39,7 @@
                         @endif
                     <div class="container">
                         <table class="table table-hover">
-                            <tr>
+                            <tr >
                                 <th> No </th>
                                 <th> NIM </th>
                                 <th> Nama </th>
@@ -53,11 +53,18 @@
                                 <td> {{$row['nim']}} </td>
                                 <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
                                 <td> 
+<<<<<<< HEAD
                                 <form method="post" action="{{route('lihat')}}">
                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                 <input type="hidden" name="from" value="Sk">
                                 <input type="hidden" name="id" value="{{$row['dokumen']}}">
                                 <button type="submit" class="btn btn-primary">{{$row['dokumen']}}</button> 
+=======
+                                    <form method="post" action="{{route('lihat')}}">
+                                        <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                                        <input type="hidden" name="id" value="{{$row['dokumen']}}">
+                                        <button type="submit" class="btn btn-link">{{$row['dokumen']}}</button> 
+>>>>>>> f8e3ca598ed542982b83ccb8909229a61347e083
                                 </form>
                                 </td>
                                 @if($row['status_sk']==0)
@@ -82,10 +89,25 @@
                                                 </div>
 
                                             <div class="modal-body">
-                                                <p> Yakin ingin memverifikasi ? </p>
-                                                <p> {{$row['nim']}} </p>
-                                                <p> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </p> 
-                                                <p> {{$row['dokumen']}} </p>
+                                                <p><b> Yakin ingin memverifikasi ? <b></p>
+                                                <table class="table">
+                                                    <tr>
+                                                        <td> NIM </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['nim']}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Nama </td>
+                                                        <td> : </td>
+                                                        <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Dokumen </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['dokumen']}} </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
 
                                                 <form method="post" action="{{route('ver_sk')}}" enctype='multipart/form-data'>
                                                 <div class="form-group">
@@ -121,10 +143,24 @@
                                                 </div>
 
                                             <div class="modal-body">
-                                                <p> Yakin ingin menolak ? </p>
-                                                <p> {{$row['nim']}} </p>
-                                                <p> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </p> 
-                                                <p> {{$row['dokumen']}} </p>
+                                                <p><b>Yakin ingin menolak ?</b></p>
+                                                <table class="table">
+                                                    <tr>
+                                                        <td> NIM </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['nim']}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Nama </td>
+                                                        <td> : </td>
+                                                        <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Dokumen </td>
+                                                        <td> : </td>
+                                                        <td> {{$row['dokumen']}} </td>
+                                                    </tr>
+                                                </table>
                                             </div>
 
                                             <div class="modal-footer">
