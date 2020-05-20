@@ -37,7 +37,7 @@
                                 <th> Judul </th>
                                 <th> Tool </th>
                                 <th> Spek </th>
-                                <th> doc </th>
+                                <th> Dokumen Permohonan KP </th>
                                 <th> Action </th>
                             <tr>
                             @foreach($Vkp as $row)
@@ -53,7 +53,7 @@
                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
                                 <input type="hidden" name="from" value="Kp">
                                 <input type="hidden" name="id" value="{{DB::table('kp')->where('id_kp', $row['id_kp'])->value('dokumen')}}">
-                                <button type="submit" class="btn btn-primary">{{DB::table('kp')->where('id_kp', $row['id_kp'])->value('dokumen')}}</button> 
+                                <button type="submit" class="btn btn-link">{{DB::table('kp')->where('id_kp', $row['id_kp'])->value('dokumen')}}</button> 
                                 </form>
                                 </td>
                                 <td>  
@@ -87,6 +87,11 @@
                                                         <td> Judul </td>
                                                         <td> : </td>
                                                         <td> {{$row['judul']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Dokumen Permohonan KP </td>
+                                                        <td> : </td>
+                                                        <td> {{DB::table('kp')->where('id_kp', $row['id_kp'])->value('dokumen')}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td> Pembimbing </td>
@@ -144,6 +149,11 @@
                                                         <td> Judul </td>
                                                         <td> : </td>
                                                         <td> {{$row['judul']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Dokumen Permohonan KP </td>
+                                                        <td> : </td>
+                                                        <td> {{DB::table('kp')->where('id_kp', $row['id_kp'])->value('dokumen')}}</td>
                                                     </tr>
                                                 </table>
                                                 

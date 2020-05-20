@@ -42,7 +42,7 @@
                         <input type="hidden" name="id" value="{{Auth::user()->id}}">
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Nim</label>
-                                <input type="text" class="form-control" name="Nim"> 
+                                <input type="text" class="form-control" name="Nim" placeholder="72180199"> 
                             </div>
                     
                             <button type="submit" class="btn btn-primary">Submit</button> 

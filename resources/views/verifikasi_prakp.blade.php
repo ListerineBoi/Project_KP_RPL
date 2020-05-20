@@ -36,7 +36,7 @@
                                 <th> Judul </th>
                                 <th> Tool </th>
                                 <th> Spek </th>
-                                <th> dok </th>
+                                <th> Dokumen Permohonan PraKP </th>
                                 <th> Action </th>
                             <tr>
                             @foreach($VPrakp as $row)
@@ -52,7 +52,7 @@
                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
                                 <input type="hidden" name="from" value="PraKp">
                                 <input type="hidden" name="id" value="{{DB::table('prakp')->where('id_prakp', $row['id_prakp'])->value('dokumen')}}">
-                                <button type="submit" class="btn btn-primary">{{DB::table('prakp')->where('id_prakp', $row['id_prakp'])->value('dokumen')}}</button> 
+                                <button type="submit" class="btn btn-link">{{DB::table('prakp')->where('id_prakp', $row['id_prakp'])->value('dokumen')}}</button> 
                                 </form>
                                 </td>
                                 <td>  
@@ -86,6 +86,11 @@
                                                         <td> Judul </td>
                                                         <td> : </td>
                                                         <td> {{$row['judul']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Dokumen Permohonan Pra KP </td>
+                                                        <td> : </td>
+                                                        <td> {{DB::table('prakp')->where('id_prakp', $row['id_prakp'])->value('dokumen')}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td> Pembimbing </td>
@@ -145,6 +150,11 @@
                                                         <td> Judul </td>
                                                         <td> : </td>
                                                         <td> {{$row['judul']}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Dokumen Permohonan Pra KP </td>
+                                                        <td> : </td>
+                                                        <td> {{DB::table('prakp')->where('id_prakp', $row['id_prakp'])->value('dokumen')}}</td>
                                                     </tr>
                                                 </table>
                                                 <form method="post" action="{{route('tolak_prakp')}}">

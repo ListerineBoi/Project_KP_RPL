@@ -31,7 +31,8 @@
                                 <th> Judul </th>
                                 <th> Lembaga </th>
                                 <th> Dosen Pembimbing </th>
-                                <th> Periode </th>
+                                <th> Semester </th>
+                                <th> Tahun </th>
                             <tr>
                             @foreach($Vprakp as $row)
                             <tr>
@@ -41,6 +42,7 @@
                                 <td> {{$row['judul']}} </td>
                                 <td> {{$row['lembaga']}} </td>
                                 <td> {{$row['name']}} </td>
+                                <td> {{DB::table('periode')->where('id_periode', $row['id_periode'])->value('semester')}} </td>
                                 <td> {{DB::table('periode')->where('id_periode', $row['id_periode'])->value('tahun')}} </td>
                             </tr>
                             @endforeach

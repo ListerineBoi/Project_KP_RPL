@@ -41,7 +41,7 @@
                         <input type="hidden" name="id" value="{{Auth::guard('dosen')->user()->id}}">
                             <div class="form-group">
                                 <label for="formGroupExampleInput">NIK</label>
-                                <input type="text" class="form-control" name="nik">
+                                <input type="text" class="form-control" name="nik" placeholder="Ex.082234C">
                             </div>
                     
                             <div class="form-group">

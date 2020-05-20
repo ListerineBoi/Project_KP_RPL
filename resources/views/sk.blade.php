@@ -102,7 +102,7 @@
                                 <th> Lembaga </th>
                                 <th> Tanggal </th>
                                 <th> Status </th>
-                                <th> doc </th>
+                                <th> Doc </th>
                             </tr>
                            
                                 @foreach($sk as $row)
@@ -118,12 +118,14 @@
                                         <td><span class="fa fa-clock-o" style="font-size:24px"></span></td>
                                     @endif
                                     <td>
-                                    <form method="post" action="{{route('lihatM')}}">
-                                    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
-                                    <input type="hidden" name="from" value="PraKp">
-                                    <input type="hidden" name="id" value="{{$row['doc_sk']}}">
-                                    <button type="submit" class="btn btn-primary">{{$row['doc_sk']}}</button> 
-                                </form>
+                                       @if($row['status_sk']==1) 
+                                            <form method="post" action="{{route('lihatM')}}">
+                                                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
+                                                <input type="hidden" name="from" value="PraKp">
+                                                <input type="hidden" name="id" value="{{$row['doc_sk']}}" >
+                                                <button type="submit" class="btn btn-link">{{$row['doc_sk']}}</button> 
+                                            </form>
+                                    @endif
                                     </td>
                                 </tr>
                                 @endforeach

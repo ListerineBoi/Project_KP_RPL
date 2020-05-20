@@ -43,7 +43,7 @@
                                 <th> No </th>
                                 <th> NIM </th>
                                 <th> Nama </th>
-                                <th> Dokumen </th>
+                                <th> Dokumen Permohonan SK </th>
                                 <th> Status </th>
                                 <th> Action </th>
                             <tr>
@@ -57,16 +57,16 @@
                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                 <input type="hidden" name="from" value="Sk">
                                 <input type="hidden" name="id" value="{{$row['dokumen']}}">
-                                <button type="submit" class="btn btn-primary">{{$row['dokumen']}}</button> 
+                                <button type="submit" class="btn btn-link">{{$row['dokumen']}}</button> 
                                 </form>
                                 </td>
-                                @if($row['status_sk']==0)
-                                <td> menunggu </td>
-                                @elseif($row['status_sk']==1)
-                                <td> terverifikasi </td>
-                                @else
-                                <td> ditolak </td>
-                                @endif
+                                    @if($row['status_sk']==0)
+                                        <td> Menunggu </td>
+                                    @elseif($row['status_sk']==1)
+                                        <td> Terverifikasi </td>
+                                    @else
+                                        <td> Ditolak </td>
+                                    @endif
                                 <td>  
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{$loop->iteration}}" > Verifikasi </button>
 
@@ -95,19 +95,19 @@
                                                         <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
                                                     </tr>
                                                     <tr>
-                                                        <td> Dokumen </td>
+                                                        <td> Permohonan SK </td>
                                                         <td> : </td>
                                                         <td> {{$row['dokumen']}} </td>
                                                     </tr>
-                                                </table>
-                                            </div>
-
-                                                <form method="post" action="{{route('ver_sk')}}" enctype='multipart/form-data'>
+                                                    <tr>
+                                                        <td> Dokumen SK </td>
+                                                        <td> : </td>
+                                                        <td>
+                                                            <form method="post" action="{{route('ver_sk')}}" enctype='multipart/form-data'>
                                                 <div class="form-group">
-                                                    <label for="file"> Dokumen (PDF Scan) </label>
-                                                        <div class="custom-file">
-                                                            <input type="file" class="form-control-file" id="file" name="doc">
-                                                            <label class="form-control-file" for="file"></label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="form-control-file" id="file" name="doc">
+                                                        <label class="form-control-file" for="file"></label>
                                                         </div>
                                                 </div>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"> Batal </button>
@@ -116,8 +116,13 @@
                                                 <input type="hidden" name="id" value="{{$row['id_sk']}}">
                                                 <button type="submit" class="btn btn-success"> Konfirmasi </button>
                                                 </form>
-                                                </div>
-
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div>
+                                                
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +154,7 @@
                                                         <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
                                                     </tr>
                                                     <tr>
-                                                        <td> Dokumen </td>
+                                                        <td> Permohonan SK </td>
                                                         <td> : </td>
                                                         <td> {{$row['dokumen']}} </td>
                                                     </tr>
