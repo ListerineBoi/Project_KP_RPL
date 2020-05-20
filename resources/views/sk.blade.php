@@ -42,7 +42,7 @@
                             <p>{{\Session::get('Forbidden')}}</p>
                         </div>
                         @endif
-                        <form method="post" action="{{route('Csk')}}" enctype='multipart/form-data'>
+                        <form method="post" action="{{route('Csk')}}" enctype='multipart/form-data'> 
                         <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                             
                             <div class="form-group">
@@ -102,6 +102,7 @@
                                 <th> Lembaga </th>
                                 <th> Tanggal </th>
                                 <th> Status </th>
+                                <th> doc </th>
                             </tr>
                            
                                 @foreach($sk as $row)
@@ -116,6 +117,14 @@
                                     @else
                                         <td><span class="fa fa-clock-o" style="font-size:24px"></span></td>
                                     @endif
+                                    <td>
+                                    <form method="post" action="{{route('lihatM')}}">
+                                    <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"> 
+                                    <input type="hidden" name="from" value="PraKp">
+                                    <input type="hidden" name="id" value="{{$row['doc_sk']}}">
+                                    <button type="submit" class="btn btn-primary">{{$row['doc_sk']}}</button> 
+                                </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 

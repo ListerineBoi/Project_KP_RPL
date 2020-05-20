@@ -60,7 +60,7 @@ class pgjnController extends Controller
             'lembaga' => $request->get('Lembaga'),
             'pimpinan' => $request->get('Pimpinan'),
             'no_telp' => $request->get('Telp'),
-            'alamat' => $request->get('Alamat'),
+            'alamat' => $request->get('Alamat'), 
             'dokumen' => $final,
             'status_sk' => "0",
             'fax' => $request->get('Fax')
