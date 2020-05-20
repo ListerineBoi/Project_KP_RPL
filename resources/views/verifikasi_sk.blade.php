@@ -53,18 +53,11 @@
                                 <td> {{$row['nim']}} </td>
                                 <td> {{DB::table('mahasiswa')->where('nim', $row['nim'])->value('name')}} </td>
                                 <td> 
-<<<<<<< HEAD
                                 <form method="post" action="{{route('lihat')}}">
                                 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
                                 <input type="hidden" name="from" value="Sk">
                                 <input type="hidden" name="id" value="{{$row['dokumen']}}">
                                 <button type="submit" class="btn btn-primary">{{$row['dokumen']}}</button> 
-=======
-                                    <form method="post" action="{{route('lihat')}}">
-                                        <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
-                                        <input type="hidden" name="id" value="{{$row['dokumen']}}">
-                                        <button type="submit" class="btn btn-link">{{$row['dokumen']}}</button> 
->>>>>>> f8e3ca598ed542982b83ccb8909229a61347e083
                                 </form>
                                 </td>
                                 @if($row['status_sk']==0)
