@@ -38,10 +38,21 @@ class kp_controller extends Controller
             ['id_periode', '=', $period],
         ])->value('id_prakp');
 
-        $forbid2 = Kp::where([
+        $forbid2 = PraKp::where([
+            ['nim', '=', $nim],
+            ['status_prakp', '=', '0'], 
+            ['id_periode', '=', $period],
+        ])->value('id_prakp');
+
+        $forbid3 = Kp::where([
             ['nim', '=', $nim],
             ['status_kp', '=', '1'], 
-            ['id_periode', '=', $period],
+        ])->value('id_kp');
+
+        $forbid4 = Kp::where([
+            ['nim', '=', $nim],
+            ['status_kp', '=', '0'],
+            ['id_periode', '=', $period], 
         ])->value('id_kp');
 
 
@@ -56,7 +67,7 @@ class kp_controller extends Controller
             'Fax' => 'required',
             'doc' => 'required'      
         ]);
-        if($forbid == true || $forbid2 == true)
+        if($forbid == true || $forbid2 == true || $forbid3 == true || $forbid4 == true)
         {
             return redirect()->route('kp')->with('Forbidden','Anda Sudah Mendaftar Pra-KP di periode ini!/Sudah Ada KP yang terverifikasi di periode ini');
         }

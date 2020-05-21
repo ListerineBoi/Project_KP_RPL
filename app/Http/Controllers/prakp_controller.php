@@ -40,8 +40,19 @@ class prakp_controller extends Controller
         $forbid2 = PraKp::where([
             ['nim', '=', $nim],
             ['status_prakp', '=', '1'], 
+        ])->value('id_prakp');
+
+        $forbid3 = PraKp::where([
+            ['nim', '=', $nim],
+            ['status_prakp', '=', '0'], 
             ['id_periode', '=', $period],
         ])->value('id_prakp');
+
+        $forbid4 = Kp::where([
+            ['nim', '=', $nim],
+            ['status_kp', '=', '0'], 
+            ['id_periode', '=', $period],
+        ])->value('id_kp');
 
 
         $period=Auth::user()->id_periode;
@@ -57,9 +68,9 @@ class prakp_controller extends Controller
             'doc' => 'required'     
         ]);
        
-        if($forbid == true || $forbid2 == true) 
+        if($forbid == true || $forbid2 == true || $forbid3 == true || $forbid4 == true) 
         {
-            return redirect()->route('prakp')->with('Forbidden','Anda Sudah Mendaftar KP/Sudah ada praKp yang terverifikasi');
+            return redirect()->route('prakp')->with('Forbidden','Anda Sudah Mendaftar KP di periode ini!/Anda Sudah Mendaftar Pra-KP di periode ini atau periode lalu');
         }
         else
         {

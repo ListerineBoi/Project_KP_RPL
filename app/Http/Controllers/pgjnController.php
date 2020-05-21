@@ -35,18 +35,7 @@ class pgjnController extends Controller
             'doc' => 'required'      
 
         ]);
-        $forbid = Sk::where([
-            ['nim', '=', $nim],
-            ['status_sk', '=', '1'], 
-        ])->value('id_sk');
 
-
-        if($forbid)
-        {
-            return redirect()->route('sk')->with('Forbidden','Sudah ada SK yang terverifikasi');
-        }
-        else
-        {
             $fullname = $request->file('doc')->getClientOriginalName();
             $nim=Auth::user()->NIM;
             $extn =$request->file('doc')->getClientOriginalExtension();
@@ -67,6 +56,5 @@ class pgjnController extends Controller
         ]);
         $Sk->save();
         return redirect()->route('sk')->with('success','Data Added');
-        }
     }
 }
