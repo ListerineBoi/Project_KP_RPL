@@ -41,7 +41,7 @@ class pgjnController extends Controller
             $extn =$request->file('doc')->getClientOriginalExtension();
             $final= $nim.'Sk'.'_'.time().'.'.$extn;
 
-            $path = $request->file('doc')->storeAs('public/suket', $final);
+            $path = $request->file('doc')->storeAs('public/Sk', $final);
         
 
         $Sk= new Sk([
