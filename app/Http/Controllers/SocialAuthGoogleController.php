@@ -68,7 +68,7 @@ class SocialAuthGoogleController extends Controller
                     Auth::login($user);
                     return redirect()->to('/data_mhs');
                 }
-                elseif(Str::endsWith($googleUser->email, "@si.ukdw.ac.id"))
+                elseif(Str::endsWith($googleUser->email, "@staff.ukdw.ac.id"))
                 {
                     $dosen = new dosen;
                     $dosen->name = $googleUser->name;
