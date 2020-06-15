@@ -58,7 +58,7 @@ class SocialAuthGoogleController extends Controller
             }
             else
             {
-                if(Str::endsWith($googleUser->email, "@gmail.com"))
+                if(Str::endsWith($googleUser->email, "@si.ukdw.ac.id"))
                 {
                     $user = new user;
                     $user->name = $googleUser->name;
